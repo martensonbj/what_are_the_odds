@@ -23,6 +23,11 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 3.1'
 end
 
+group :test do
+  gem 'vcr'
+  gem 'webmock'
+end
+
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
