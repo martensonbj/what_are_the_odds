@@ -9,6 +9,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem 'pg'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'byebug'
@@ -20,6 +21,11 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda-matchers', '~> 3.1'
+end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do

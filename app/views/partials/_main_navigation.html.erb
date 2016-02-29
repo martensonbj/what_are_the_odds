@@ -4,8 +4,14 @@
       <%= link_to 'What Are The Odds?', root_path, class: 'navbar-brand' %>
     </div>
     <div id="navbar">
-      <ul class="nav navbar-nav">
-
+      <ul class="nav navbar-nav pull-right">
+        <% if current_user %>
+          <li><%= link_to 'Challenge History', '#' %></li>
+          <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+          <li><%= image_tag current_user.picture, alt: current_user.name %></li>
+        <% else %>
+          <li><%= link_to 'Log In', '/auth/facebook' %></li>
+        <% end %>
       </ul>
     </div>
   </div>
