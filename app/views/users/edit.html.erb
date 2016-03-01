@@ -1,0 +1,13 @@
+<%= form_for @user, :html => {class: "update-user-form"} do |f| %>
+  <%= render partial: 'partials/errors', locals: {target: @user} %>
+
+  <%= f.label :email, "Email" %>
+  <%= f.text_field :email %>
+  <br>
+
+  <%= f.label :phone, "Email" %>
+  <%= f.telephone_field :phone%>
+  <br>
+
+  <%= f.submit "Finish Registration!", class: "wave-effect waves-light btn" %>
+<% end  %>

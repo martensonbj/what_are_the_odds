@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
-  
+
   before do
       request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
   end
@@ -15,7 +15,7 @@ RSpec.describe SessionsController, type: :controller do
 
     it "redirects to dashboard" do
       get :create, provider: :facebook
-      expect(response).to redirect_to dashboard_path
+      expect(response).to redirect_to edit_user_path(:user_id)
     end
   end
 

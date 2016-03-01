@@ -1,0 +1,7 @@
+<% @challenges.each do |challenge| %>
+  <p>Challenge Title: <%= challenge.title %></p>
+  <p>Assigned To: <%= challenge.assigned_user %></p>
+  <p>Expires On: <%= challenge.expiration_date %></p>
+  <p>Challenge Details: <%= challenge.message %></p>
+  <p>Check It Out: <%= challenge.video %></p>
+<% end %>
