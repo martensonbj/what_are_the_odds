@@ -1,13 +1,16 @@
 require 'vcr'
 require 'webmock'
 
+require 'simplecov'
+SimpleCov.start 'rails'
+
 RSpec.configure do |config|
 
   config.before :each do
     OmniAuth.config.mock_auth[:facebook] = nil
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
-        :provider => 'Facebook',
+        :provider => 'facebook',
         :uid => ENV["TEST_UID"],
         :info => {
           :name => 'Test User',
