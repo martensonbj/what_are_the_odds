@@ -1,0 +1,22 @@
+<%= form_for @challenge, :html => {class: "profile_form main_form"}, :multipart => true do |f| %>
+  <%= render partial: 'partials/errors', locals: {target: @challenge} %>
+
+  <%= f.label "Challenge Title", :title %>
+  <%= f.text_field :title %>
+  <br>
+
+  <%= f.label "Send To:", :assigned_user %>
+  <%= f.select :assigned_user, options_for_select(["user1", "user2", "user3"]) %>
+  <br>
+
+  <%= f.label "What Are The Odds...", :message %>
+  <%= f.text_area :message %>
+
+  <%= f.label "Expiration Date Label", :expiration_date %>
+  <%= f.date_select :expiration_date %>
+
+  <%= f.label "Upload A Video", :video %>
+  <%= f.file_field :video %>
+
+  <%= f.submit "Submit", class: "wave-effect waves-light btn" %>
+<% end  %>

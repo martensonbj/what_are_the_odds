@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
-
+  
   before do
       request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
   end
@@ -20,7 +20,6 @@ RSpec.describe SessionsController, type: :controller do
   end
 
   describe "#destroy" do
-
     before do
       get :create, provider: :facebook
     end
@@ -35,6 +34,5 @@ RSpec.describe SessionsController, type: :controller do
       delete :destroy
       expect(response).to redirect_to root_url
     end
-
   end
 end

@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "landing page", :type => :feature, vcr: true do
+RSpec.feature "landing page", :type => :feature do
   scenario "User can log in with facebook" do
     visit "/"
     user = generate_user
