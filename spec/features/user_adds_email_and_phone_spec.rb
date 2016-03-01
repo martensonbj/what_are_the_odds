@@ -11,11 +11,11 @@ RSpec.feature "new user page", :type => :feature, vcr: true do
 
     expect(current_path).to eq edit_user_path(user.id)
 
-    expect(page).to have_text("Last step!")
+    expect(page).to have_text("Last few questions...")
 
     fill_in 'Email', with: 'example@gmail.com'
     fill_in 'Phone', with: '123-456-7899'
-    click_on 'Submit'
+    click_on 'Finish Registration!'
 
     expect(current_path).to eq dashboard_path
 

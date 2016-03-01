@@ -1,3 +1,4 @@
+<h2>Last few questions...</h2>
 <%= form_for @user, :html => {class: "update-user-form"} do |f| %>
   <%= render partial: 'partials/errors', locals: {target: @user} %>
 
@@ -5,7 +6,7 @@
   <%= f.text_field :email %>
   <br>
 
-  <%= f.label :phone, "Email" %>
+  <%= f.label :phone, "Phone" %>
   <%= f.telephone_field :phone%>
   <br>
 

@@ -13,10 +13,6 @@ RSpec.describe SessionsController, type: :controller do
       session[:user_id].should_not be_nil
     end
 
-    it "redirects to dashboard" do
-      get :create, provider: :facebook
-      expect(response).to redirect_to edit_user_path(:user_id)
-    end
   end
 
   describe "#destroy" do

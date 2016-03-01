@@ -11,6 +11,12 @@ RSpec.feature "create new challenge", :type => :feature do
 
     expect(current_path).to eq edit_user_path(user.id)
 
+    fill_in 'Email', with: 'example@example.com'
+    fill_in 'Phone', with: '123-444-5555'
+    click_on 'Finish Registration!'
+
+    expect(current_path).to eq dashboard_path
+
     within '#dashboard-content' do
         expect(page).to have_text("Challenge A Friend!")
     end
