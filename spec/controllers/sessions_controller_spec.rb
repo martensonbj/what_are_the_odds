@@ -13,14 +13,9 @@ RSpec.describe SessionsController, type: :controller do
       session[:user_id].should_not be_nil
     end
 
-    it "redirects to dashboard" do
-      get :create, provider: :facebook
-      expect(response).to redirect_to dashboard_path
-    end
   end
 
   describe "#destroy" do
-
     before do
       get :create, provider: :facebook
     end
@@ -35,6 +30,5 @@ RSpec.describe SessionsController, type: :controller do
       delete :destroy
       expect(response).to redirect_to root_url
     end
-
   end
 end
