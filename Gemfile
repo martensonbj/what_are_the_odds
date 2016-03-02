@@ -11,6 +11,8 @@ gem 'figaro'
 gem 'pg'
 gem 'omniauth-facebook'
 gem 'redis'
+gem 'faraday'
+
 
 group :development, :test do
   gem 'byebug'

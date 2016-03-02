@@ -6,7 +6,10 @@
   <br>
 
   <%= f.label :assigned_user, "Send To:" %>
-  <%= f.select :assigned_user, options_for_select(["user1", "user2", "user3"]) %>
+  <%= f.select(:assigned_user, current_user.friends.collect do |friend|
+     [friend.name, friend.id]
+   end
+  )%>
   <br>
 
   <%= f.label :message, "What Are The Odds..." %>
