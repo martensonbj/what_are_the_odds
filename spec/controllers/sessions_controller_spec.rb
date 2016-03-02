@@ -10,9 +10,8 @@ RSpec.describe SessionsController, type: :controller do
     it "successfully creates a session" do
       session[:user_id].should be_nil
       get :create, provider: :facebook
-      session[:user_id].should_not be_nil
+      expect(session[:user_id]).to_not be_nil
     end
-
   end
 
   describe "#destroy" do
@@ -23,7 +22,7 @@ RSpec.describe SessionsController, type: :controller do
     it "should clear the session" do
       session[:user_id].should_not be_nil
       delete :destroy
-      session[:user_id].should be_nil
+      expect(session[:user_id]).to be_nil
     end
 
     it "should redirect to the home page" do

@@ -14,7 +14,6 @@ class SessionsController < ApplicationController
 
   def destroy
     if current_user
-      # session.delete(:user_id)
       session[:user_id] = nil
       flash[:success] = 'Successfully Logged Out'
     end

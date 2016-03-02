@@ -1,14 +1,17 @@
-<h2>Last few questions...</h2>
-<%= form_for @user, :html => {class: "update-user-form"} do |f| %>
+<div class="user-registration-content">
+  <h2>Last few questions...</h2>
+
+  <%= form_for @user, :html => {class: "update-user-form"} do |f| %>
   <%= render partial: 'partials/errors', locals: {target: @user} %>
 
-  <%= f.label :email, "Email" %>
+  <%= f.label :email, "Email", placeholder: 'example@somewhere.com'%>
   <%= f.text_field :email %>
   <br>
 
-  <%= f.label :phone, "Phone" %>
+  <%= f.label :phone, "Phone", placeholder: '303-967-5309' %>
   <%= f.telephone_field :phone%>
   <br>
 
   <%= f.submit "Finish Registration!", class: "wave-effect waves-light btn" %>
-<% end  %>
+  <% end  %>
+</div>

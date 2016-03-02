@@ -18,7 +18,7 @@ RSpec.configure do |config|
           :picture => 'http://graph.facebook.com/10105044885670557/picture'
         },
         :credentials => {
-          :token => ENV["TOKEN"]
+          :token => "12345"
         }
       })
   end

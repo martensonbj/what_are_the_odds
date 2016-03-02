@@ -10,11 +10,124 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- 
- 
  */
 
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "custom";
+@import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
+
+$primary-button-color: #333;
+$primary-button-color-hover: rgb(107, 107, 107);
+
+$red-success-text: #A94A42;
+
+body{
+  font-family: 'News Cycle', sans-serif;
+  height: 100vh;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.btn {
+  background-color: $primary-button-color;
+  color: #fff;
+}
+.btn:hover {
+  background-color: $primary-button-color-hover;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    label {
+      display: block;
+    }
+}
+
+.new-challenge-form {
+
+}
+
+body.body-landing-page {
+  background-color: #aaa;
+  background-image: url('jump1.jpeg');
+  background-size: cover;
+  .home-content {
+    position: relative;
+    top: 100px;
+    left: -115px;
+    h1 {
+      font-size: 60px;
+      letter-spacing: 8px;
+      margin-bottom: 40px;
+    }
+    .btn-default {
+      color: #fff;
+      padding: 20px!important;
+      width: 236px;
+      border: none;
+    }
+    .btn-default:hover {
+    border: none;
+    }
+  }
+}
+
+.navbar {
+  border-radius: 0px;
+}
+
+.alert-success {
+  color: $red-success-text;
+  position: absolute;
+  right: 125px;
+  top: 50px;
+}
+
+.user-registration-content {
+    max-width: 500px;
+    margin: 100px auto;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 0px 30px 30px 30px;
+    border-radius: 5px;
+    input {
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      width: 100%;
+      text-align: center;
+      height: 50px;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+    input:focus {
+      outline: none;
+    }
+}
+
+#dashboard-content {
+  a {
+    border: 1px solid #ccc;
+    background-color: $primary-button-color;
+    color: #fff;
+    max-width: 800px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 37px #aaa;
+    height: 130px;
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    vertical-align: bottom;
+    line-height: 12rem;
+    font-size: 34px;
+    margin: 0 auto;
+  }
+  a:hover{
+    background-color: $primary-button-color-hover;
+  }
+}

@@ -10,6 +10,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem 'pg'
 gem 'omniauth-facebook'
+gem 'redis'
 
 group :development, :test do
   gem 'byebug'

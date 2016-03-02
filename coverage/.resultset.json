@@ -93,7 +93,6 @@
         null,
         1,
         2,
-        null,
         2,
         2,
         null,
@@ -134,8 +133,13 @@
       "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/models/user.rb": [
         1,
         1,
+        1,
+        1,
+        1,
+        1,
         null,
         1,
+        null,
         6,
         6,
         6,
@@ -144,12 +148,10 @@
         null,
         6,
         6,
-        null,
-        null,
         null,
         null
       ]
     },
-    "timestamp": 1456812812
+    "timestamp": 1456871813
   }
 }
