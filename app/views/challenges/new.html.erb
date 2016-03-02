@@ -6,8 +6,7 @@
   <br>
 
   <%= f.label :assigned_user, "Send To:" %>
-  <%= f.select("challenge", "assigned_user", current_user.friends.collect do |friend|
-    binding.pry
+  <%= f.select(:assigned_user, current_user.friends.collect do |friend|
      [friend.name, friend.id]
    end
   )%>
