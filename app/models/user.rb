@@ -25,13 +25,9 @@ class User < ActiveRecord::Base
     friends_hash = fs.friends
     friends = friends_hash.first[1]
 
-    friend_list = friends.each do |friend|
+    friend_list = friends.collect! do |friend|
       friend_as_user = User.find_by(uid: friend[:id])
-      binding.pry
-      something = user.friendships.build(:friend_id => friend_as_user[:id])
-      binding.pry
+      user.friendships.first_or_initialize(:friend_id => friend_as_user[:id])
     end
-    friend_list
-    binding.pry
   end
 end
