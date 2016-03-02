@@ -1,4 +1,3 @@
-
 <%= form_for @challenge, :html => {class: "new-challenge-form"}, :multipart => true do |f| %>
   <%= render partial: 'partials/errors', locals: {target: @challenge} %>
 
@@ -6,9 +5,12 @@
   <%= f.text_field :title %>
   <br>
 
-
   <%= f.label :assigned_user, "Send To:" %>
-  <%= f.select :assigned_user, options_for_select("in progress") %>
+  <%= f.select("challenge", "assigned_user", current_user.friends.collect do |friend|
+    binding.pry
+     [friend.name, friend.id]
+   end
+  )%>
   <br>
 
   <%= f.label :message, "What Are The Odds..." %>
