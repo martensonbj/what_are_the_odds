@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :friend do
+    name "MyString"
+  end
   factory :challenge do
     title "MyString"
     assigned_user "MyString"

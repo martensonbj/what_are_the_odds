@@ -4,6 +4,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   end
 
   provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'],
-    scope: 'public_profile', info_fields: 'id,name,link,picture,email'
-
+    scope: 'public_profile, email, user_friends', info_fields: 'id,name,link,picture', :auth_type => 'reauthenticate'
+    
 end

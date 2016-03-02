@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :challenges
+  has_many :friends
+
   validates :uid, uniqueness: true, presence: true
   validates :name, presence: true
   validates :provider, presence: true
@@ -12,8 +14,14 @@ class User < ActiveRecord::Base
     user.link = auth['info']['link']
     user.picture = auth['info']['image']
     user.token = auth['credentials']['token']
+    binding.pry
+    find_friends(user)
 
     user.save
     user
+  end
+
+  def self.find_friends(user)
+    Friend.new(user)
   end
 end

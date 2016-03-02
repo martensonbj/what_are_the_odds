@@ -6,11 +6,12 @@ class ChallengesController < ApplicationController
 
   def new
     @challenge = Challenge.new
+    fs = FacebookService.new(current_user)
+    @friends = fs.friends
   end
 
   def create
     @challenge = Challenge.new(challenge_params)
-
     if @challenge.save
       redirect_to challenges_path
       flash[:success] = "Challenge Sent!"
