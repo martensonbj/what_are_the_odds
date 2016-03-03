@@ -10,12 +10,15 @@
       </div>
       <div id="navbar">
         <ul class="nav navbar-nav pull-right">
+          <% if current_user && has_pending_challenges? %>
+            <li> <%= link_to 'PENDING CHALLENGES', challenges_path,  class: "challenge-alert" %> </li>
+          <% end %>
           <% if current_user %>
-          <li><%= link_to 'Challenge History', challenges_path %></li>
-          <li><%= link_to 'Logout', logout_path, method: :delete %></li>
-          <li><%= image_tag current_user.picture, alt: current_user.name %></li>
+            <li><%= link_to 'Challenge History', challenges_path %></li>
+            <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+            <li><%= image_tag current_user.picture, alt: current_user.name %></li>
           <% else %>
-          <li><%= link_to 'Log In', '/auth/facebook' %></li>
+            <li><%= link_to 'Log In', '/auth/facebook' %></li>
           <% end %>
         </ul>
       </div>

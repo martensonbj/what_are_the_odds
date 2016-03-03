@@ -20,7 +20,8 @@
 $primary-button-color: #333;
 $primary-button-color-hover: rgb(107, 107, 107);
 
-$red-success-text: #A94A42;
+$success-text: #A94A42;
+$alert-text: #ff0000;
 
 body{
   font-family: 'News Cycle', sans-serif;
@@ -46,10 +47,6 @@ form {
     label {
       display: block;
     }
-}
-
-.new-challenge-form {
-
 }
 
 body.body-landing-page {
@@ -79,15 +76,18 @@ body.body-landing-page {
 
 .navbar {
   border-radius: 0px;
+  .challenge-alert{
+    color: $alert-text!important;
+  }
 }
 
 .alert-success {
-  color: $red-success-text;
+  color: $success-text;
   position: absolute;
   right: 125px;
   top: 50px;
   border: none;
-  background-color: none;
+  background-color: transparent;
 }
 
 .user-registration-content {
