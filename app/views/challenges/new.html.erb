@@ -5,11 +5,14 @@
   <%= f.text_field :title %>
   <br>
 
-  <%= f.label :assigned_user, "Send To:" %>
-  <%= f.select(:assigned_user, current_user.friends.collect do |friend|
+  <% if current_user.friends %>
+    <%= f.label :assigned_user, "Send To:" %>
+    <%= f.select(:assigned_user, current_user.friends.collect do |friend|
      [friend.name, friend.id]
-   end
-  )%>
+    end)%>
+  <% else %>
+    "Invite Friends!"
+  <% end %>
   <br>
 
   <%= f.label :message, "What Are The Odds..." %>

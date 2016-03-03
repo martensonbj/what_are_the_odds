@@ -13,10 +13,9 @@ gem 'omniauth-facebook'
 gem 'redis'
 gem 'faraday'
 
-
 group :development, :test do
   gem 'byebug'
-  gem 'pry'
+  gem 'pry-byebug'
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
   gem 'database_cleaner'

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to dashboard_path
+      redirect_to challenges_path
     else
       flash.now[:error] = "All fields must be filled in."
       render :edit
