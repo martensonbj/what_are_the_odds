@@ -81,5 +81,3 @@ test:
 production:
   <<: *default
   database: what_are_the_odds_production
-  username: what_are_the_odds
-  password: <%= ENV['WHAT_ARE_THE_ODDS_DATABASE_PASSWORD'] %>
