@@ -1,0 +1,12 @@
+<h1>
+  <%= @challenge.title %>
+</h1>
+
+<p>Sent By: <%= @challenge.user_id %></p>
+<p>Assigned To: <%= @challenge.assigned_user %>
+<p>Expires On: <%= @challenge.expiration_date %></p>
+<p>Challenge Details: <%= @challenge.message %></p>
+<p>Video: <%= @challenge.video %></p>
+
+<%= link_to "Accept Challenge!", edit_challenge_path(@challenge), method: :put, class: "btn-default btn accept-button" %>
+<%= link_to "Nope!", "#", class: "btn-default btn decline-button" %>
