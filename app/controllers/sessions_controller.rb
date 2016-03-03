@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Welcome, #{@user.name}!"
     elsif @user && @user.email
       session[:user_id] = @user.id
-      redirect_to dashboard_path
+      redirect_to challenges_path
     else
       redirect_to root_path
       flash[:warning] =  "There was an error with your authentication."

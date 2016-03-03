@@ -3,11 +3,10 @@ require "rails_helper"
 RSpec.feature "create new challenge", :type => :feature do
   scenario "challenges#new" do
     visit "/"
-    user = generate_user
-
     within '.home-content' do
       click_on "Login with Facebook"
     end
+    user = User.first
 
     expect(current_path).to eq edit_user_path(user.id)
 
@@ -15,7 +14,7 @@ RSpec.feature "create new challenge", :type => :feature do
     fill_in 'Phone', with: '123-444-5555'
     click_on 'Finish Registration!'
 
-    expect(current_path).to eq dashboard_path
+    expect(current_path).to eq challenges_path
 
     within '#dashboard-content' do
         expect(page).to have_text("Challenge A Friend!")

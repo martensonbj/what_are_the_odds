@@ -13,12 +13,12 @@ RSpec.configure do |config|
         :provider => 'facebook',
         :uid => ENV["TEST_UID"],
         :info => {
-          :name => 'Test User',
+          :name => 'Brenna Martenson',
           :link => 'https://www.facebook.com/app_scoped_user_id/10105044885670557/',
           :picture => 'http://graph.facebook.com/10105044885670557/picture'
         },
         :credentials => {
-          :token => "12345"
+          :token => ENV["TOKEN"]
         }
       })
   end

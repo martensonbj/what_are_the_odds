@@ -1,7 +1,25 @@
-<% @challenges.each do |challenge| %>
-  <p>Challenge Title: <%= challenge.title %></p>
-  <p>Assigned To: <%= challenge.assigned_user %></p>
-  <p>Expires On: <%= challenge.expiration_date %></p>
-  <p>Challenge Details: <%= challenge.message %></p>
-  <p>Check It Out: <%= challenge.video %></p>
-<% end %>
+<div id="dashboard-content">
+  <%= link_to 'Challenge A Friend!', new_challenge_path %>
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Sent Challenges</h2>
+      <% @sent_challenges.each do |challenge| %>
+        <p>Challenge Title: <%= challenge.title %></p>
+        <p>Assigned To: <%= challenge.assigned_user %></p>
+        <p>Expires On: <%= challenge.expiration_date %></p>
+        <p>Challenge Details: <%= challenge.message %></p>
+        <p>Video: <%= challenge.video %></p>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <h2>Pending Challenges</h2>
+      <% @pending_challenges.each do |challenge| %>
+          <p>Challenge Title: <%= challenge.title %></p>
+          <p>Sent By: <%= challenge.user_id %></p>
+          <p>Expires On: <%= challenge.expiration_date %></p>
+          <p>Challenge Details: <%= challenge.message %></p>
+          <p>Video: <%= challenge.video %></p>
+      <% end %>
+    </div>
+  </div><!--row-->
+</div><!--dashboard_content-->

@@ -1,13 +1,14 @@
 class ChallengesController < ApplicationController
 
   def index
-    @challenges = Challenge.all
+    @sent_challenges = Challenge.all.where(user_id: current_user.id)
+    @pending_challenges = Challenge.where(assigned_user: current_user.id)
   end
 
   def new
     @challenge = Challenge.new
-    fs = FacebookService.new(current_user)
-    @friends = fs.friends
+    fb = FriendBuilder.new
+    @friends = fb.build_friends(current_user)
   end
 
   def create
@@ -25,5 +26,6 @@ class ChallengesController < ApplicationController
   def challenge_params
     params.require(:challenge).permit(:title, :assigned_user, :expiration_date, :message, :video, :user_id)
   end
+
 
 end
