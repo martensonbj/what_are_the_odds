@@ -23,6 +23,9 @@ $primary-button-color-hover: rgb(107, 107, 107);
 $success-text: #A94A42;
 $alert-text: #ff0000;
 
+$challenge-title-button: rgb(169, 67, 66);
+$challenge-title-button-hover: rgb(199, 57, 55);
+
 body{
   font-family: 'News Cycle', sans-serif;
   height: 100vh;
@@ -113,7 +116,7 @@ body.body-landing-page {
 }
 
 #dashboard-content {
-  a {
+  .challenge-button {
     border: 1px solid #ccc;
     background-color: $primary-button-color;
     color: #fff;
@@ -131,5 +134,14 @@ body.body-landing-page {
   }
   a:hover{
     background-color: $primary-button-color-hover;
+    color: #fff;
+  }
+  .challenge-title {
+    min-width: 200px;
+    min-height: 35px;
+    background-color: $challenge-title-button;
+  }
+  .challenge-title:hover{
+    background-color: $challenge-title-button-hover;
   }
 }
