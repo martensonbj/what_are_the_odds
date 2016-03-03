@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+  class User < ActiveRecord::Base
   has_many :challenges
   has_many :friendships
   has_many :friends, :through => :friendships
