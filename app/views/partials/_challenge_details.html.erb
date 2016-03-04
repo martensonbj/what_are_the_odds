@@ -1,22 +1,23 @@
+<h4><%= link_to challenge.title, challenge_path(challenge.id)%> <span class="pull-right"><span>Expires In:</span> <%= distance_of_time_in_words(challenge.expiration_date, Time.now)%></span><br><%= challenge.status %></h4>
+<div class="row">
+    <div class="col-md-6"><span>Sent By:</span> <br><%= User.find(challenge.user_id).name %></div>
+    <div class="col-md-6"><span>Assigned To:</span> <br><%= User.find(challenge.assigned_user).name %></div>
+</div>
+<div class="row">
+  <div class="col-md-12"><span>Challenge Details:</span> <br><%= challenge.message %></div>
+</div>
 
-<h4><%= link_to challenge.title, challenge_path(challenge.id)%></h4>
-<% if current_user.id == challenge.assigned_user %>
-  <p>Sent By: <%= User.find(challenge.user_id).name %></p>
-<% end %>
-<p>Assigned To: <%= User.find(challenge.assigned_user).name %>
-<p>Expires On: <%= challenge.expiration_date %></p>
-<p>Challenge Details: <%= challenge.message %></p>
-<p>Video: <%= challenge.video %></p>
+<div><span>Video:</span> <%= challenge.video %></div>
 
 
 <% if challenge.challenger_guess && challenge.challengee_guess %>
   <h4>Odds Are 1 in <%= challenge.odds %></h4>
   <h4 class="challenge-ready-text">CHALLENGE READY!</h4>
-  <h3 id ="start-countdown" class="btn btn-default"> START COUNTDOWN! </h3>
-  <h1 id="count"></h1>
+
+  <h3 class="start-countdown btn btn-default"> START COUNTDOWN! <span class="count"></span> </h3>
 <% end %>
 
-<div id="show-answers" >
+<div class="show-answers" >
   Challenger Guess:<%= challenge.challenger_guess %><br>
   Challengee Guess: <%= challenge.challengee_guess %></h1>
 </div>
@@ -28,30 +29,27 @@
 </p>
 
 
-
 <script type="text/javascript">
 $(document).ready(function(){
-  document.getElementById("start-countdown").onclick = function(){
-  (function(){
-    var counter = 4;
-    var countdown = document.getElementById("count")
+  $(".start-countdown").click(function(){
+    var counter = 3;
+    var countdown = $('.count')
+    var showAnswers = $('.show-answers')
     // var showAnswers = document.getElementById("show-answers")
 
     setInterval(function() {
       if (counter >= 0) {
-        countdown.innerHTML = counter;
+        countdown.css('display', 'block');
+        countdown.html(counter);
       }
       if (counter === 0) {
-          console.log("IN THE ELSE STATEMENT")
-          document.getElementById("show-answers").style.display="block"
-          document.getElementById("count").style.display="none"
+          // document.getElementById("show-answers").style.display="block"
+          showAnswers.css('display', 'block')
+          countdown.toggle();
       }
       counter--;
     }, 1000);
-  })();
-  }
-
+  });
 })
-
 
 </script>

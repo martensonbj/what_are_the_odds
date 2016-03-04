@@ -1,11 +1,9 @@
 class ChallengesController < ApplicationController
+  helper_method :check_status
 
   def index
-    # @sent_challenges, @pending_challenges = Challenge.get_challenges()
-    # ----> [22, 33]
-
     @sent_challenges = Challenge.all.where(user_id: current_user.id)
-    @pending_challenges = Challenge.where(assigned_user: current_user.id)
+    @pending_challenges = Challenge.all.where(assigned_user: current_user.id)
   end
 
   def new
@@ -55,5 +53,11 @@ class ChallengesController < ApplicationController
     params.require(:challenge).permit(:title, :assigned_user, :expiration_date, :message, :video, :user_id, :challenger_guess, :challengee_guess, :odds)
   end
 
+  def check_status
+    challenge = Challenge.find(params[:id])
+    if challenge.challenger_guess && challenge.challengee_guess
+      challenge.update_attributes(status: "accepted")
+    end
+  end
 
 end

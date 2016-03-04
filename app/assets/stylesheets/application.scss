@@ -26,7 +26,7 @@ $alert-text: #ff0000;
 $challenge-title-button: rgb(169, 67, 66);
 $challenge-title-button-hover: rgb(199, 57, 55);
 
-#show-answers {
+.show-answers {
   display: none;
   color: red;
 }
@@ -167,9 +167,29 @@ body.body-landing-page {
   }
   .challenge-block {
     padding: 15px;
-    border: 1px dotted #aaa;
+    margin: 25px;
+    text-align: center;
+    box-shadow: 1px 1px 30px #333;
+    h4 {
+      border-bottom: 1px solid #aaa;
+      padding-bottom: 15px;
+    }
+    span {
+      font-weight: bold;
+    }
+    div {
+      padding: 5px;
+    }
+    .challenge-ready-text {
+    color: #333333;
+    background-color: #f4f4f4;
+    line-height: 50px;
+    letter-spacing: 10px;
+    margin-top: -10px;
+    }
   }
 }
+
 
 /*** FORMS ***/
 .new-challenge-form {
