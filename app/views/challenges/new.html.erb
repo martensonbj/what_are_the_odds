@@ -1,33 +1,39 @@
+
+<h1>Challenge A Friend!</h1>
+
 <%= form_for @challenge, :html => {class: "new-challenge-form"}, :multipart => true do |f| %>
   <%= render partial: 'partials/errors', locals: {target: @challenge} %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.text_field :title, placeholder: 'Challenge Title' %>
+      <br>
 
-  <%= f.label :title, "Challenge Title" %>
-  <%= f.text_field :title %>
-  <br>
+      <%= f.text_area :message, placeholder: 'What Are The Odds...' %>
+      <br>
+    </div>
 
-  <% if current_user.friends %>
-    <%= f.label :assigned_user, "Send To:" %>
-    <%= f.select(:assigned_user, current_user.friends.collect do |friend|
-     [friend.name, friend.id]
-    end)%>
-  <% else %>
-    "Invite Friends!"
-  <% end %>
-  <br>
+    <div class="col-md-6">
+      <% if current_user.friends %>
+      <%= f.label :assigned_user, "Send To:" %>
+      <%= f.select(:assigned_user, current_user.friends.collect do |friend|
+        [friend.name, friend.id]
+      end)%>
+      <% else %>
+      "Invite Friends!"
+      <% end %>
+      <br>
 
-  <%= f.label :message, "What Are The Odds..." %>
-  <%= f.text_area :message %>
-  <br>
+      <%= f.label :expiration_date, "Expiration Date Label" %>
+      <%= f.date_select :expiration_date, :order => [:day, :month, :year] %>
 
-  <%= f.label :expiration_date, "Expiration Date Label" %>
-  <%= f.datetime_select :expiration_date %>
-  <br>
+      <br>
 
-  <%= f.label :video, "Upload A Video" %>
-  <%= f.file_field :video %>
-  <br>
+      <%= f.label :video, "Upload A Video (optional)" %>
+      <%= f.file_field :video %>
+      <br>
+    </div>
+  </div>
 
   <%= f.hidden_field :user_id, :value => current_user.id %>
-
-  <%= f.submit "Send Challenge!", class: "wave-effect waves-light btn" %>
+  <%= f.submit "Send Challenge!", class: "btn btn-default" %>
 <% end  %>

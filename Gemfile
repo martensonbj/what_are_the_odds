@@ -12,7 +12,7 @@ gem 'pg'
 gem 'omniauth-facebook'
 gem 'redis'
 gem 'faraday'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'byebug'

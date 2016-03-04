@@ -26,7 +26,6 @@ RSpec.feature "create new challenge", :type => :feature do
       expect(current_path).to eq new_challenge_path
       expect(page).to have_text("Send To:")
       expect(page).to have_text("What Are The Odds...")
-      expect(page).to have_button("Send Challenge!")
     end
 
     click_on "Send Challenge!"

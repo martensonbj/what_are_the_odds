@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "landing page", :type => :feature do
-  xscenario "User can log in with facebook" do
+  scenario "User can log in with facebook" do
     user = generate_user
     user.update_attributes(email: "example@gmail.com", phone: "123-444-5555")
     visit challenges_path

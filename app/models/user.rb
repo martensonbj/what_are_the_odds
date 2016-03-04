@@ -9,6 +9,7 @@
   validates :token, presence: true
 
   def self.find_or_create_from_auth(auth)
+    binding.pry
     user = User.find_or_create_by(provider: auth['provider'], uid: auth['uid'])
     user.name = auth['info']['name']
     user.link = auth['info']['link']
@@ -19,6 +20,7 @@
     user
   end
 
+  # ???????????????????
   def build_friends(user)
     binding.pry
     fs = FacebookService.new(user)

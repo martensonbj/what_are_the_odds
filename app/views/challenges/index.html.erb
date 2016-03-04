@@ -4,33 +4,27 @@
     <div class="col-md-6">
       <h2>Sent Challenges</h2>
       <% @sent_challenges.each do |challenge| %>
-        <p>Challenge Title: <%= link_to challenge.title, challenge_path(challenge.id), class: "btn btn-default challenge-title"%></p>
-        <p>Assigned To: <%= challenge.assigned_user %></p>
-        <p>Expires On: <%= challenge.expiration_date %></p>
-        <p>Challenge Details: <%= challenge.message %></p>
-        <p>Video: <%= challenge.video %></p>
-
-        <% unless challenge.status == "pending" %>
-            <%= link_to "Delete", challenge_path(challenge), method: :delete, :class=> "btn btn-default delete-button"%>
+      <div class="challenge-block">
+        <%= render partial: 'partials/challenge_details', locals: {challenge: challenge} %>
+        <% if challenge.challengee_guess && !challenge.challenger_guess %>
+          <p>Challenge Has Been Accepted! Add Guess!</p>
+          <%= link_to "Add Guess", edit_challenge_path(challenge), class: "btn btn-default" %>
         <% end %>
 
+        <% unless challenge.status == "pending" %>
+        <%= link_to "Delete", challenge_path(challenge), method: :delete, :class=> "btn btn-default delete-button"%>
+        <% end %>
+      </div><!--challenge block-->
       <% end %>
     </div>
 
     <div class="col-md-6">
       <h2>Pending Challenges</h2>
       <% @pending_challenges.each do |challenge| %>
-          <p>Challenge Title: <%= link_to challenge.title, challenge_path(challenge.id), class: "btn btn-default challenge-title" %></p>
-          <p>Sent By: <%= challenge.user_id %></p>
-          <p>Expires On: <%= challenge.expiration_date %></p>
-          <p>Challenge Details: <%= challenge.message %></p>
-          <p>Video: <%= challenge.video %></p>
-
-          <% unless challenge.status == "pending" %>
-          <% binding.pry %>
-              <%= link_to "Delete", challenge_path(challenge), method: :delete, :class=> "btn btn-default delete-button"%>
-          <% end %>
+        <div class="challenge-block">
+          <%= render partial: 'partials/challenge_details', locals: {challenge: challenge} %>
+        </div><!--challenge-block-->
       <% end %>
-    </div>
+    </div><!--col-->
   </div><!--row-->
 </div><!--dashboard_content-->

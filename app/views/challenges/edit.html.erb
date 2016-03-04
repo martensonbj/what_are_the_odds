@@ -1,0 +1,40 @@
+<h1>
+    <%= @challenge.title %>
+</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <h3>Challenge Details</h3>
+    <%= render partial: 'partials/challenge_details', locals: {challenge: @challenge} %>
+  </div>
+
+  <% if current_user.id == @challenge.assigned_user.to_i  %>
+    <div class="col-md-6">
+      <%= form_for @challenge, :html => {class: "edit-challenge-form"} do |f| %>
+        <div id="challenge-accepted">
+          <h1>CHALLENGE ACCEPTED!</h1>
+          <h3>What Are Your Odds?<br>
+          <small>Choose a Number between 2-10</small></h3>
+          <span class="number-box">1</span>. . . .
+            <%= f.text_field :odds, placeholder: '#',  class: 'odds-number' %>
+          <br>
+          <p>Guess A Number!</p>
+          <%= f.text_field :challengee_guess, placeholder: '#',  class: 'challengee-guess' %>
+        </div><!--challenge-accepted-->
+        <%= f.submit "Submit!", class: "btn-default btn" %>
+      <% end %>
+    </div>
+  <% else%>
+    <div class="col-md-6">
+      <%= form_for @challenge, :html => {class: "edit-challenge-form"} do |f| %>
+        <div id="challenge-accepted">
+          <h1>CHALLENGE ACCEPTED!</h1>
+          <h3>Odds Are 1-<%=@challenge.odds%></h3><br>
+          <p>Guess A Number!</p>
+          <%= f.text_field :challenger_guess, placeholder: '#',  class: 'challenger-guess' %>
+        </div><!--challenge-accepted-->
+        <%= f.submit "Submit!", class: "btn-default btn" %>
+      <% end %>
+    </div>
+    <% end %>
+</div><!--row-->

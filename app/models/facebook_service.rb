@@ -7,7 +7,11 @@ class FacebookService
   end
 
   def friends
-    friends = parse(connection.get("/#{current_user.uid}/friends", access_token: current_user.token))
+    parse(connection.get("/#{current_user.uid}/friends", access_token: current_user.token))
+  end
+
+  def email
+    email= parse(connection.get("/#{current_user.uid}/email", access_token: current_user.token))
   end
 
   private
