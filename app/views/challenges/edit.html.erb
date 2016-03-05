@@ -21,6 +21,7 @@
           <p>Guess A Number!</p>
           <%= f.text_field :challengee_guess, placeholder: '#',  class: 'challengee-guess' %>
         </div><!--challenge-accepted-->
+        <%= f.hidden_field :status, :value => 'accepted' %>
         <%= f.submit "Submit!", class: "btn-default btn" %>
       <% end %>
     </div>
@@ -32,6 +33,7 @@
           <h3>Odds Are 1-<%=@challenge.odds%></h3><br>
           <p>Guess A Number!</p>
           <%= f.text_field :challenger_guess, placeholder: '#',  class: 'challenger-guess' %>
+
         </div><!--challenge-accepted-->
         <%= f.submit "Submit!", class: "btn-default btn" %>
       <% end %>

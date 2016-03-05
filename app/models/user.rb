@@ -9,7 +9,6 @@
   validates :token, presence: true
 
   def self.find_or_create_from_auth(auth)
-    binding.pry
     user = User.find_or_create_by(provider: auth['provider'], uid: auth['uid'])
     user.name = auth['info']['name']
     user.link = auth['info']['link']
@@ -22,15 +21,14 @@
 
   # ???????????????????
   def build_friends(user)
-    binding.pry
     fs = FacebookService.new(user)
     friends_hash = fs.friends
     friends = friends_hash.first[1]
 
     friend_list = friends.collect! do |friend|
-      binding.pry
       friend_as_user = User.find_by(uid: friend[:id])
       user.friendships.first_or_initialize(:friend_id => friend_as_user[:id])
     end
   end
+
 end

@@ -11,9 +11,9 @@
           <%= link_to "Add Guess", edit_challenge_path(challenge), class: "btn btn-default" %>
         <% end %>
 
-        <% unless challenge.status == "pending" %>
+        <% #unless challenge.status == "pending" %>
         <%= link_to "Delete", challenge_path(challenge), method: :delete, :class=> "btn btn-default delete-button"%>
-        <% end %>
+        <% #end %>
       </div><!--challenge block-->
       <% end %>
     </div>
@@ -23,8 +23,12 @@
       <% @pending_challenges.each do |challenge| %>
         <div class="challenge-block">
           <%= render partial: 'partials/challenge_details', locals: {challenge: challenge} %>
+          <% #unless challenge.status == "pending" %>
+          <%= link_to "Delete", challenge_path(challenge), method: :delete, :class=> "btn btn-default delete-button"%>
+          <% #end %>
         </div><!--challenge-block-->
       <% end %>
+
     </div><!--col-->
   </div><!--row-->
 </div><!--dashboard_content-->

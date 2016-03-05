@@ -15,7 +15,7 @@
     <div class="col-md-6">
       <% if current_user.friends %>
       <%= f.label :assigned_user, "Send To:" %>
-      <%= f.select(:assigned_user, current_user.friends.collect do |friend|
+      <%= f.select(:assigned_user, current_user.friends.map do |friend|
         [friend.name, friend.id]
       end)%>
       <% else %>
@@ -28,12 +28,11 @@
 
       <br>
 
-      <%= f.label :video, "Upload A Video (optional)" %>
-      <%= f.file_field :video %>
+      <%= f.label :challenge_video, "Upload A Challenge Video! (optional)" %>
+      <%= f.file_field :challenge_video %>
       <br>
     </div>
   </div>
 
-  <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.submit "Send Challenge!", class: "btn btn-default" %>
 <% end  %>

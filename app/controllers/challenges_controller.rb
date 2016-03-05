@@ -19,7 +19,7 @@ class ChallengesController < ApplicationController
   def update
     @challenge = Challenge.find(params[:id])
     if @challenge.update(challenge_params)
-      redirect_to challenges_path
+      render :show
     else
       flash.now[:error] = "All fields must be filled in."
       render :edit
@@ -38,6 +38,9 @@ class ChallengesController < ApplicationController
 
   def show
     @challenge = Challenge.find(params[:id])
+    if @challenge.challengee_guess
+      @challenge.update_attributes(status: 'accepted')
+    end
   end
 
   def destroy
@@ -49,7 +52,6 @@ class ChallengesController < ApplicationController
   private
 
   def challenge_params
-    binding.pry
     params.require(:challenge).permit(:title, :assigned_user, :expiration_date, :message, :video, :user_id, :challenger_guess, :challengee_guess, :odds)
   end
 
