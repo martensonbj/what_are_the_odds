@@ -18,9 +18,10 @@
       <%= f.select(:assigned_user, current_user.friends.map do |friend|
         [friend.name, friend.id]
       end)%>
-      <% else %>
-      "Invite Friends!"
       <% end %>
+      <br>
+
+      <%= link_to "Invite A Friend By Text!", '#' %>
       <br>
 
       <%= f.label :expiration_date, "Expiration Date Label" %>

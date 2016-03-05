@@ -1,6 +1,13 @@
   <h4><%= link_to challenge.title, challenge_path(challenge.id)%>
     <br><br>Status: <span class="status-text"><%= challenge.status %></span></h4>
 
+    <p>
+      TEMPORARY
+      (odds: <%= challenge.odds %>)
+      (Challenger's Guess: <%= challenge.challenger_guess %>)
+      (Challengee's Guess: <%= challenge.challengee_guess %>)
+    </p>
+
   <div class="expiration-date">
     Expires In:<%= distance_of_time_in_words(challenge.expiration_date, Time.now)%></span>
   </div>
@@ -13,11 +20,8 @@
     <div class="col-md-12"><span>Challenge Details:</span> <br><%= challenge.message %></div>
   </div>
 
-  <div><span>Challenge Video:</span> <%= challenge.challenge_video %></div>
-  <div><span>Response Video:</span> <%= challenge.response_video %></div>
+  <div class="row">
 
-  <p>
-    (odds: <%= challenge.odds %>)
-    (Challenger's Guess: <%= challenge.challenger_guess %>)
-    (Challengee's Guess: <%= challenge.challengee_guess %>)
-  </p>
+  </div>
+  <div class="col-md-6"><span>Challenge Video:</span> <%= challenge.challenge_video %></div>
+  <div class="col-md-6"><span>Response Video:</span> <%= challenge.response_video %></div>
