@@ -39,7 +39,8 @@ class ChallengesController < ApplicationController
     check_status
     cs = CameraService.new
     @videos = cs.recordings
-    binding.pry
+    @post = Post.new
+    @posts = Post.where(challenge_id: @challenge.id)
   end
 
   def destroy
