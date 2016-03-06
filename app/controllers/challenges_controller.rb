@@ -1,9 +1,12 @@
 class ChallengesController < ApplicationController
   helper_method :check_status
+  before_action :find_challenge, only: [:edit, :update, :destroy]
 
   def index
     @sent_challenges = Challenge.all.where(user_id: current_user.id)
     @pending_challenges = Challenge.all.where(assigned_user: current_user.id)
+    cs = CameraService.new
+    @videos = cs.recordings
   end
 
   def new
@@ -13,11 +16,9 @@ class ChallengesController < ApplicationController
   end
 
   def edit
-    @challenge = Challenge.find(params[:id])
   end
 
   def update
-    @challenge = Challenge.find(params[:id])
     if @challenge.update(challenge_params)
       render :show
     else
@@ -37,15 +38,14 @@ class ChallengesController < ApplicationController
   end
 
   def show
-    @challenge = Challenge.find(params[:id])
-    if @challenge.challengee_guess
-      @challenge.update_attributes(status: 'accepted')
-    end
+    check_status
+    cs = CameraService.new
+    @videos = cs.recordings
+    binding.pry
   end
 
   def destroy
-    challenge = Challenge.find(params[:id])
-    challenge.destroy
+    @challenge.destroy
     redirect_to challenges_path
   end
 
@@ -56,10 +56,14 @@ class ChallengesController < ApplicationController
   end
 
   def check_status
-    challenge = Challenge.find(params[:id])
-    if challenge.challenger_guess && challenge.challengee_guess
-      challenge.update_attributes(status: "accepted")
+    find_challenge
+    if @challenge.challengee_guess
+      @challenge.update_attributes(status: "accepted")
     end
+  end
+
+  def find_challenge
+    @challenge = Challenge.find(params[:id])
   end
 
 end

@@ -29,11 +29,37 @@
 
       <br>
 
-      <%= f.label :challenge_video, "Upload A Challenge Video! (optional)" %>
-      <%= f.file_field :challenge_video %>
+      <%= f.label :challenge_video, "Record It! (optional)" %>
+      <camera id='new_camera' data-app-id='a-a6486a40-c536-0133-4d8a-12819bc4053b'></camera>
+      <video id='new_video' data-uuid=''></video>
+
+      <%= link_to "Stop Recording", id: 'stopRecording', class: 'btn btn-default' %>
+      <%= link_to "Save", id: 'saveRecording', class: 'btn btn-default' %>
+      <%= link_to "GetVideo", id: 'getNewVideo', class: 'btn btn-default' %>
       <br>
     </div>
   </div>
 
   <%= f.submit "Send Challenge!", class: "btn btn-default" %>
 <% end  %>
+
+<script>
+$('document').ready(function(){
+  CameraTag.observe('new_camera', "initialized", function(){
+    myCamera = CameraTag.cameras["new_camera"];
+  });
+
+  $('#stopRecording').on('click', function(){
+    myCamera.stopRecording();
+  });
+
+  $('#saveRecording').on('click', function(){
+    myCamera.publish();
+    $('#new_video').data('uuid', 'something');
+  });
+  $('#getNewVideo').on('click', function(){
+    myCamera.getVideo();
+  });
+
+});
+</script>

@@ -53,7 +53,8 @@
     <div class="submit-video">
       <%= form_for @challenge, :html => {class: "add-video-form"}, :multipart => true do |f| %>
         <%= f.label :response_video, "Submit Proof!" %>
-        <%= f.file_field :response_video %>
+        <camera id='response_video' data-app-id='a-a6486a40-c536-0133-4d8a-12819bc4053b
+  '></camera>
 
         <%= f.hidden_field :status, :value => 'completed' %>
         <%= f.submit "Send Proof!", class: "btn btn-default" %>
