@@ -48,7 +48,7 @@ a:hover {
   background-color: $primary-button-color-hover;
 }
 form {
-  max-width: 500px;
+  max-width: 650px;
   margin: 0 auto;
   text-align: center;
   label {
@@ -179,6 +179,8 @@ body.body-landing-page {
 }
 /*** FORMS ***/
 .new-challenge-form {
+  box-shadow: 1px 1px 30px #aaa;
+  padding: 25px;
   input,
   textarea,
   select {
@@ -195,10 +197,18 @@ body.body-landing-page {
   select:focus {
     outline: none;
   }
-  input.wave-effect.waves-light.btn {
+  input.btn.btn-default {
     line-height: 0;
     font-size: 18px;
+    margin-top: 25px;
   }
+}
+.text-friend {
+  border: 1px solid #aaa;
+  padding: 5px;
+  text-align: center;
+  width: 400px;
+  margin: 0 auto;
 }
 textarea#challenge_message {
   height: 200px;

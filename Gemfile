@@ -13,6 +13,7 @@ gem 'omniauth-facebook'
 gem 'redis'
 gem 'faraday'
 gem 'rails_12factor', group: :production
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'byebug'

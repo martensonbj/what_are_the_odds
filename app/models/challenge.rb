@@ -6,6 +6,5 @@ class Challenge < ActiveRecord::Base
   validates :message, presence: true
   validates :assigned_user, presence: true
 
-  
 
 end
