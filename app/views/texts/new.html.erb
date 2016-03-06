@@ -1,0 +1,4 @@
+<%= form_for @text_message, :html => {class: "new-text-form"} do |f| %>
+    <%= f.text_field :target_phone_number %>
+    <%= f.submit "Send Text!", class: "btn btn-default" %>
+<% end %>

@@ -1,6 +1,15 @@
 
 <h1>Challenge A Friend!</h1>
 
+<div class="row text-friend">
+  <h4>Text A Friend to Join!</h4>
+  <%= form_for :text, url: '/texts/send_text_message', method: :post do |f| %>
+  <%= f.text_field :target_phone_number %>
+  <%= f.submit "Send Text!", class: "btn btn-default" %>
+  <% end %>
+</div>
+<br>
+
 <%= form_for @challenge, :html => {class: "new-challenge-form"}, :multipart => true do |f| %>
   <%= render partial: 'partials/errors', locals: {target: @challenge} %>
   <div class="row">
@@ -21,19 +30,41 @@
       <% end %>
       <br>
 
-      <%= link_to "Invite A Friend By Text!", '#' %>
-      <br>
-
       <%= f.label :expiration_date, "Expiration Date Label" %>
       <%= f.date_select :expiration_date, :order => [:day, :month, :year] %>
-
       <br>
+    </div>
 
-      <%= f.label :challenge_video, "Upload A Challenge Video! (optional)" %>
-      <%= f.file_field :challenge_video %>
+    <div class="col-md-8 col-md-offset-2">
+      <%= f.label :challenge_video, "Record It! (optional)" %>
+      <camera id='new_camera' data-app-id='a-a6486a40-c536-0133-4d8a-12819bc4053b'></camera>
       <br>
+      | <%= link_to "Stop Recording", id: 'stopRecording', class: 'btn btn-default' %> |
+      <%= link_to "Save", id: 'saveRecording', class: 'btn btn-default' %> |
+      <%= link_to "GetVideo", id: 'getNewVideo', class: 'btn btn-default' %> |
     </div>
   </div>
 
   <%= f.submit "Send Challenge!", class: "btn btn-default" %>
 <% end  %>
+
+<script>
+$('document').ready(function(){
+  CameraTag.observe('new_camera', "initialized", function(){
+    myCamera = CameraTag.cameras["new_camera"];
+  });
+
+  $('#stopRecording').on('click', function(){
+    myCamera.stopRecording();
+  });
+
+  $('#saveRecording').on('click', function(){
+    myCamera.publish();
+    $('#new_video').data('uuid', 'something');
+  });
+  $('#getNewVideo').on('click', function(){
+    myCamera.getVideo();
+  });
+
+});
+</script>

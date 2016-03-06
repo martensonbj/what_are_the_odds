@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get 'add_guess', to: 'challenges#edit'
 
-  resources :users, only: [:edit, :update]
+post 'texts/send_text_message' => 'texts#send_text_message'
+resources :users, only: [:edit, :update]
 
-  resources :challenges
+resources :challenges
 
 end
