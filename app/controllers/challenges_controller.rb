@@ -5,8 +5,6 @@ class ChallengesController < ApplicationController
   def index
     @sent_challenges = Challenge.all.where(user_id: current_user.id)
     @pending_challenges = Challenge.all.where(assigned_user: current_user.id)
-    cs = CameraService.new
-    @videos = cs.recordings
   end
 
   def new

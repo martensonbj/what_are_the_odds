@@ -8,9 +8,10 @@ class CameraService
 
   def recordings
     data = parse(connection.get("?api_key=#{ENV["CAMERA_TOKEN"]}"))
-    data.map do |recording|
-      recording[:formats].first[:video_url]
-    end
+    # binding.pry
+    # data.map do |recording|
+    #   recording[:formats].first[:video_url]
+    # end
   end
 
   def parse(response)
