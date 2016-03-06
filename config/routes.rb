@@ -11,5 +11,6 @@ post 'texts/send_text_message' => 'texts#send_text_message'
 resources :users, only: [:edit, :update]
 
 resources :challenges
+resources :posts
 
 end

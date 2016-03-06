@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :post do
+    body "MyString"
+    user nil
+    challenge nil
+  end
   factory :friendship do
     user_id 1
     friend_id 1

@@ -2,6 +2,7 @@
   has_many :challenges
   has_many :friendships
   has_many :friends, :through => :friendships
+  has_many :posts
 
   validates :uid, uniqueness: true, presence: true
   validates :name, presence: true

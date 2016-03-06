@@ -1,68 +1,74 @@
 
-<div class="show-challenge-block">
-  <%= render partial: 'partials/challenge_details', locals: {challenge: @challenge} %>
+<div class="row">
+  <div class="show-challenge-block col-md-6">
+    <%= render partial: 'partials/challenge_details', locals: {challenge: @challenge} %>
 
-  <% if @challenge.status == "pending" && @challenge.assigned_user.to_i == current_user.id && !@challenge.challengee_guess %>
-    <%= link_to "Accept Challenge!", edit_challenge_path(@challenge), class: "btn-default btn accept-button"%>
-    <%= link_to "Nope!", "#", class: "btn-default btn decline-button" %>
-  <% end %>
+    <% if @challenge.status == "pending" && @challenge.assigned_user.to_i == current_user.id && !@challenge.challengee_guess %>
+      <%= link_to "Accept Challenge!", edit_challenge_path(@challenge), class: "btn-default btn accept-button"%>
+      <%= link_to "Nope!", "#", class: "btn-default btn decline-button" %>
+    <% end %>
 
-  <% if @challenge.status == "accepted" && @challenge.user_id == current_user %>
-    <%= link_to "Guess A Number!", edit_challenge_path(@challenge), class: "btn-default btn accept-button"%>
-  <% end %>
+    <% if @challenge.status == "accepted" && @challenge.user_id == current_user %>
+      <%= link_to "Guess A Number!", edit_challenge_path(@challenge), class: "btn-default btn accept-button"%>
+    <% end %>
 
-  <% if @challenge.challengee_guess && !@challenge.challenger_guess%>
-    <p>  Waiting For Other Guess!</p>
-  <% end %>
+    <% if @challenge.challengee_guess && !@challenge.challenger_guess%>
+      <p>  Waiting For Other Guess!</p>
+    <% end %>
 
-  <% if @challenge.status == "pending" && @challenge.user_id == current_user  %>
-    <p>WAITING FOR CHALLENGE TO BE ACCEPTED</p>
-  <% end %>
+    <% if @challenge.status == "pending" && @challenge.user_id == current_user  %>
+      <p>WAITING FOR CHALLENGE TO BE ACCEPTED</p>
+    <% end %>
 
-  <% if @challenge.challenger_guess && @challenge.challengee_guess %>
-    <h4>Odds Are 1 in <%= @challenge.odds %></h4>
-    <h4 class="challenge-ready-text">CHALLENGE READY!</h4>
-    <h3 class="start-countdown btn btn-default"> START COUNTDOWN! <span class="count"></span> </h3>
-  <% end %>
+    <% if @challenge.challenger_guess && @challenge.challengee_guess %>
+      <h4>Odds Are 1 in <%= @challenge.odds %></h4>
+      <h4 class="challenge-ready-text">CHALLENGE READY!</h4>
+      <h3 class="start-countdown btn btn-default"> START COUNTDOWN! <span class="count"></span> </h3>
+    <% end %>
 
-  <div class="row answers">
-    <div class="col-md-6 answer-box">
-      <% if challenger? %>
-        <h3>YOUR GUESS</h3>
-      <% else %>
-        <h3>THEIR GUESS</h3>
-      <% end %>
-      <div class="show-answers" >
-        <%= @challenge.challenger_guess %><br>
+    <div class="row answers">
+      <div class="col-md-6 answer-box">
+        <% if challenger? %>
+          <h3>YOUR GUESS</h3>
+        <% else %>
+          <h3>THEIR GUESS</h3>
+        <% end %>
+        <div class="show-answers" >
+          <%= @challenge.challenger_guess %><br>
+        </div>
+      </div>
+
+      <div class="col-md-6 answer-box">
+        <% if challengee? %>
+          <h3>YOUR GUESS</h3>
+        <% else %>
+          <h3>THEIR GUESS</h3>
+        <% end %>
+        <div class="show-answers" >
+          <%= @challenge.challengee_guess %></h1>
+        </div>
       </div>
     </div>
 
-    <div class="col-md-6 answer-box">
-      <% if challengee? %>
-        <h3>YOUR GUESS</h3>
-      <% else %>
-        <h3>THEIR GUESS</h3>
-      <% end %>
-      <div class="show-answers" >
-        <%= @challenge.challengee_guess %></h1>
+    <% if both_guesses_submitted? && @challenge.status == "accepted" && challengee? %>
+      <div class="submit-video">
+        <%= form_for @challenge, :html => {class: "add-video-form"}, :multipart => true do |f| %>
+          <%= f.label :response_video, "Submit Proof!" %>
+          <camera id='response_video' data-app-id='a-a6486a40-c536-0133-4d8a-12819bc4053b
+    '></camera>
+
+          <%= f.hidden_field :status, :value => 'completed' %>
+          <%= f.submit "Send Proof!", class: "btn btn-default" %>
+        <% end %>
       </div>
-    </div>
+    <% end %>
+  </div><!--challenge block-->
+
+  <div class="challenge-posts col-md-6">
+    <%= render partial: 'partials/posts' %>
   </div>
+</div><!--row-->
 
-  <% if both_guesses_submitted? && @challenge.status == "accepted" && challengee? %>
-    <div class="submit-video">
-      <%= form_for @challenge, :html => {class: "add-video-form"}, :multipart => true do |f| %>
-        <%= f.label :response_video, "Submit Proof!" %>
-        <camera id='response_video' data-app-id='a-a6486a40-c536-0133-4d8a-12819bc4053b
-  '></camera>
-
-        <%= f.hidden_field :status, :value => 'completed' %>
-        <%= f.submit "Send Proof!", class: "btn btn-default" %>
-      <% end %>
-    </div>
-  <% end %>
-
-</div>
 
 <script type="text/javascript">
 $(document).ready(function(){

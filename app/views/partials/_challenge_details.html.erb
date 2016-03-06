@@ -13,15 +13,13 @@
   </div>
 
   <div class="row">
-      <div class="col-md-6"><span>Sent By:</span> <br><%= User.find(challenge.user_id).name %></div>
+      <%= User.find(challenge.user_id).name %></div>
       <div class="col-md-6"><span>Assigned To:</span> <br><%= User.find(challenge.assigned_user).name %></div>
   </div>
   <div class="row">
     <div class="col-md-12"><span>Challenge Details:</span> <br><%= challenge.message %></div>
   </div>
-
-  <div class="row">
-
-  </div>
+<div class="row">
   <div class="col-md-6"><span>Challenge Video:</span> <%= challenge.challenge_video %></div>
   <div class="col-md-6"><span>Response Video:</span> <%= challenge.response_video %></div>
+</div>

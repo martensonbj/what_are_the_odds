@@ -1,0 +1,25 @@
+<div class="post-message-form">
+  <h3>Send A Message!</h3>
+  <% if challenger? %>
+  To: <%= User.find(@challenge.assigned_user).name %>
+  <% elsif challengee? %>
+  To: <%= User.find(@challenge.user_id) %>
+  <% end %>
+
+  <%= form_for @post, method: :post do |f| %>
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :challenge_id, :value => @challenge.id %>
+  <%= f.submit "Post Message!", class: "btn btn-default" %>
+  <% end %>
+</div>
+
+<% @posts.each do |post| %>
+  <div>
+      From: <%= image_tag "#{User.find(post.user_id).picture}"  %>
+      <%= post.body %>
+      <%= post.created_at %>
+  </div>
+ <% end %>
