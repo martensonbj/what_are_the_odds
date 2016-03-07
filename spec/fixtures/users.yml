@@ -1,5 +1,11 @@
+me:
+  provider: "facebook"
+  uid: "10105044885670557"
+  name: "Brenna Martenson"
+  token: "CAAYjPdlkJlEBAO20Eqf0n0LnIsbZCDtU2cjT8M4ZB1J9DHGEje5cHGA5Tix0kjg0aPy2D3ga2PsmG1txJsZAofZBQJDzhfMMvg1z16PmsemuTMY9JieaZBcsRqvGkYZB9xDZAtqHTgvBZClRXzubbnwZC4az3rF9hny4kd25yVn5VZAw7mNWb8XZAViurHvoVe6X8vvbTKchRi63Dl4F9A8gqKlZBlnYuCimJq4SpKrD6YjwGUNCZAqnVCwPl"
+
 user_2:
-  provider: facebook
-  uid: 1021652391250031
-  name: Test User
+  provider: "facebook"
+  uid: "1021652391250031"
+  name: "Test User"
   token: "42525"

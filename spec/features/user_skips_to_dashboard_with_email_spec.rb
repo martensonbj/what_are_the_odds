@@ -7,7 +7,7 @@ RSpec.feature "user login", :type => :feature do
       click_on "Login with Facebook"
     end
 
-    user = User.first
+    user = User.last
 
     expect(current_path).to eq edit_user_path(user.id)
     user.update_attributes(email: 'example@gmail.com', phone: '123-456-7890')

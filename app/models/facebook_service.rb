@@ -11,7 +11,8 @@ class FacebookService
   end
 
   def email
-    email = parse(connection.get("/#{current_user.uid}/email", access_token: current_user.token))
+    email = parse(connection.get("/#{current_user.uid}", access_token: current_user.token))
+    binding.pry
   end
 
   private

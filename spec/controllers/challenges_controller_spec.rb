@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-xRSpec.describe ChallengesController, type: :controller do
+RSpec.describe ChallengesController, type: :controller do
   user = OmniAuth.config.mock_auth[:facebook]
-  describe "GET #index" do
+  xdescribe "GET #index" do
     it "responds with success" do
       get :index
       expect(response).to be_success
@@ -15,7 +15,7 @@ xRSpec.describe ChallengesController, type: :controller do
     end
   end
 
-  describe "GET #show" do
+  xdescribe "GET #show" do
     it "responds with success" do
       get :show
       expect(response).to be_success

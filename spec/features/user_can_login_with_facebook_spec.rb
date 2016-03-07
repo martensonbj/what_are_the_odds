@@ -6,7 +6,7 @@ RSpec.describe "landing page" do
         within '.home-content' do
           click_on "Login with Facebook"
         end
-        user = User.first
+        user = User.last
         expect(current_path).to eq edit_user_path(user.id)
   end
 end
