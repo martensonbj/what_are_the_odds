@@ -4,29 +4,33 @@
 
     <div class="col-md-6">
       <h2>Sent Challenges</h2>
-      <% @sent_challenges.each do |challenge| %>
-      <div class="challenge-block">
-        <%= render partial: 'partials/challenge_details', locals: {challenge: challenge} %>
+      <% if @sent_challenges %>
+        <% @sent_challenges.each do |challenge| %>
+        <div class="challenge-block">
+          <%= render partial: 'partials/challenge_details', locals: {challenge: challenge} %>
 
-        <% if challenge.challengee_accepted? %>
-          <p>Challenge Has Been Accepted! Add Guess!</p>
-          <%= link_to "Add Guess", edit_challenge_path(challenge), class: "btn btn-default" %>
+          <% if challenge.challengee_accepted? %>
+            <p>Challenge Has Been Accepted! Add Guess!</p>
+            <%= link_to "Add Guess", edit_challenge_path(challenge), class: "btn btn-default" %>
+          <% end %>
+
+          <% if challenge.challenge_activated? %>
+          Expires In:<%= distance_of_time_in_words(challenge.expiration_date, Time.now)%></span>
+          <% end %>
+
+        </div><!--challenge block-->
         <% end %>
-
-        <% if challenge.challenge_activated? %>
-        Expires In:<%= distance_of_time_in_words(challenge.expiration_date, Time.now)%></span>
-        <% end %>
-
-      </div><!--challenge block-->
       <% end %>
     </div><!--col md 6-->
 
     <div class="col-md-6">
       <h2>Pending Challenges</h2>
-      <% @pending_challenges.each do |challenge| %>
-        <div class="challenge-block">
-          <%= render partial: 'partials/challenge_details', locals: {challenge: challenge} %>
-        </div><!--challenge-block-->
+      <% if @pending_challenges %>
+        <% @pending_challenges.each do |challenge| %>
+          <div class="challenge-block">
+            <%= render partial: 'partials/challenge_details', locals: {challenge: challenge} %>
+          </div><!--challenge-block-->
+        <% end %>
       <% end %>
     </div><!--col-->
 

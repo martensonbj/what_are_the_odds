@@ -14,6 +14,8 @@ gem 'redis'
 gem 'faraday'
 gem 'rails_12factor', group: :production
 gem 'twilio-ruby'
+gem 'pry-byebug'
+
 
 group :development, :test do
   gem 'byebug'

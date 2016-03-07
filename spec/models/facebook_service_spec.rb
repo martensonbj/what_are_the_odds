@@ -5,7 +5,7 @@ RSpec.describe FacebookService do
   describe "#friends" do
     it "gets friends from user" do
       VCR.use_cassette 'list_friends' do
-        user = users(:me)
+        user = generate_user
         fb = FacebookService.new(user)
         response = fb.friends
         expect(response.first[1][0].keys).to include(:name, :id)
