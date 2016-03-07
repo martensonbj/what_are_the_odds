@@ -6,7 +6,6 @@ class FriendBuilder
     friends.map do |friend|
       friend_as_user = User.find_by(uid: friend[:id])
       if friend_as_user
-        binding.pry
         current_user.friendships.where(friend_id: friend_as_user[:id]).first_or_create
       else
         "You Have No Friends"

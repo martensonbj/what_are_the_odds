@@ -3,17 +3,6 @@ require "rails_helper"
 RSpec.feature "create new challenge", :type => :feature do
   fixtures :users
   scenario "challenges#new" do
-      # visit "/"
-      # within '.home-content' do
-      #   click_on "Login with Facebook"
-      # end
-      # user = User.last
-      #
-      # expect(current_path).to eq edit_user_path(user.id)
-      #
-      # fill_in 'Email', with: 'example@example.com'
-      # fill_in 'Phone', with: '123-444-5555'
-      # click_on 'Finish Registration!'
       user = generate_user
       ApplicationController.any_instance.stubs(:current_user).returns(user)
 

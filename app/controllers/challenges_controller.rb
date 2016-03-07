@@ -3,7 +3,6 @@ class ChallengesController < ApplicationController
   before_action :find_challenge, only: [:edit, :update, :destroy]
 
   def index
-    binding.pry
       @sent_challenges = Challenge.all.where(user_id: current_user.id)
       @pending_challenges = Challenge.all.where(assigned_user: current_user.id.to_s)
   end
