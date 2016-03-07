@@ -1,20 +1,5 @@
-me:
-  id: 4
-  provider: Facebook
-  uid: 10105044885670557
-  name: Brenna Martenson
-  token: ENV["TOKEN"]
-
-first:
-  id: 7
-  provider: facebook
-  uid: 10153961720133622
-  name: Jordan Lawler
-  token: ENV["FIRST_TOKEN"]
-
-second:
-  id: 6
+user_2:
   provider: facebook
   uid: 1021652391250031
-  name: Deb Martenson
-  token: ENV["SECOND_TOKEN"]
+  name: Test User
+  token: "42525"

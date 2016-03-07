@@ -16,10 +16,12 @@
   <% end %>
 </div>
 
-<% @posts.each do |post| %>
-  <div>
-      From: <%= image_tag "#{User.find(post.user_id).picture}"  %>
-      <%= post.body %>
-      <%= post.created_at %>
-  </div>
- <% end %>
+<% if @challenge.posts.any? %>
+  <% @posts.each do |post| %>
+    <div>
+        From: <%= image_tag "#{User.find(post.user_id).picture}"  %>
+        <%= post.body %>
+        <%= post.created_at %>
+    </div>
+  <% end %>
+<% end %>

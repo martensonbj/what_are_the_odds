@@ -11,7 +11,7 @@ RSpec.configure do |config|
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
         :provider => 'facebook',
-        :uid => ENV["TEST_UID"],
+        :uid => '12345',
         :info => {
           :name => 'Brenna Martenson',
           :link => 'https://www.facebook.com/app_scoped_user_id/10105044885670557/',
@@ -24,16 +24,18 @@ RSpec.configure do |config|
   end
 
   def generate_user
-    User.create(provider: "facebook", uid: ENV["TEST_UID"], name: "Test User", link: "https://www.facebook.com/app_scoped_user_id/10105044885670557/", picture: "http://graph.facebook.com/10105044885670557/picture", token: ENV["TOKEN"] )
+    User.create(provider: "facebook", uid: ENV["TEST_UID"], name: "Brenna Martenson", link: "https://www.facebook.com/app_scoped_user_id/10105044885670557/", picture: "http://graph.facebook.com/10105044885670557/picture", token: ENV["TOKEN"] )
   end
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
 
-  config.mock_with :rspec do |mocks|
-    mocks.verify_partial_doubles = true
-  end
+  config.mock_with :mocha
+
+  # config.mock_with :rspec do |mocks|
+  #   mocks.verify_partial_doubles = true
+  # end
 
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.

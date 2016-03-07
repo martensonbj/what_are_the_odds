@@ -1,0 +1,9 @@
+post_1:
+  body: "My first post"
+  user_id: 1
+  challenge_id: 1
+
+post_2:
+  body: "My second post"
+  user_id: 3
+  challenge_id: 1

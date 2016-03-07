@@ -31,6 +31,7 @@ group :test do
   gem 'vcr'
   gem 'webmock'
   gem 'simplecov', :require => false
+  gem 'mocha'
 end
 
 group :development do

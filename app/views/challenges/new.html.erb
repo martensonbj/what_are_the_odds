@@ -50,6 +50,13 @@
 
 <script>
 $('document').ready(function(){
+  CameraTag.setup();
+
+  CameraTag.observe('MyRecorder1', 'published', function(){
+    alert('this video has been published!')
+  });
+
+
   CameraTag.observe('new_camera', "initialized", function(){
     myCamera = CameraTag.cameras["new_camera"];
   });

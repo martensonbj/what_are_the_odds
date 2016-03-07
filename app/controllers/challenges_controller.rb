@@ -17,6 +17,7 @@ class ChallengesController < ApplicationController
   end
 
   def update
+    @post = Post.new
     if @challenge.update(challenge_params)
       render :show
     else
@@ -37,8 +38,6 @@ class ChallengesController < ApplicationController
 
   def show
     check_status
-    cs = CameraService.new
-    @videos = cs.recordings
     @post = Post.new
     @posts = Post.where(challenge_id: @challenge.id)
   end
