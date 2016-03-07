@@ -256,3 +256,32 @@ textarea#challenge_message {
     font-size: 40px;
   }
 }
+
+.challenge-posts {
+  margin-left: 50px;
+  width: 45%;
+  h3  {
+    text-align: center;
+  }
+  #new_post{
+    margin-top: 25px;
+    box-shadow: 1px 1px 30px #aaa;
+    padding: 25px;
+    padding-bottom: 20px;
+    textarea {
+      width: 60%;
+      height: 50px;
+      border: none;
+      border: 1px solid #aaa;
+      border-radius: 5px;
+    }
+    input.btn.btn-default {
+      position: relative;
+      top: -20px;
+      left: 20px;
+    }
+  }
+  .conversation {
+    margin-top: 25px;
+  }
+}

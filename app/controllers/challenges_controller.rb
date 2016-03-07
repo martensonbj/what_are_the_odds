@@ -18,6 +18,7 @@ class ChallengesController < ApplicationController
 
   def update
     @post = Post.new
+    @posts = Post.where(challenge_id: @challenge.id)
     if @challenge.update(challenge_params)
       render :show
     else
@@ -55,7 +56,11 @@ class ChallengesController < ApplicationController
 
   def check_status
     find_challenge
-    if @challenge.challengee_guess
+    if @challenge.guesses_match?
+      @challenge.update_attributes(status: "activated")
+    elsif @challenge.guesses_dont_match?
+      @challenge.update_attributes(status: "dead")
+    elsif @challenge.challengee_guess
       @challenge.update_attributes(status: "accepted")
     end
   end

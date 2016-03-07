@@ -1,34 +1,34 @@
 <div id="dashboard-content">
   <%= link_to 'Challenge A Friend!', new_challenge_path, class: "challenge-button" %>
   <div class="row">
+
     <div class="col-md-6">
       <h2>Sent Challenges</h2>
       <% @sent_challenges.each do |challenge| %>
       <div class="challenge-block">
         <%= render partial: 'partials/challenge_details', locals: {challenge: challenge} %>
-        <% if challenge.challengee_guess && !challenge.challenger_guess %>
+
+        <% if challenge.challengee_accepted? %>
           <p>Challenge Has Been Accepted! Add Guess!</p>
           <%= link_to "Add Guess", edit_challenge_path(challenge), class: "btn btn-default" %>
         <% end %>
 
-        <% #unless challenge.status == "pending" %>
-        <%= link_to "Delete", challenge_path(challenge), method: :delete, :class=> "btn btn-default delete-button"%>
-        <% #end %>
+        <% if challenge.challenge_activated? %>
+        Expires In:<%= distance_of_time_in_words(challenge.expiration_date, Time.now)%></span>
+        <% end %>
+
       </div><!--challenge block-->
       <% end %>
-    </div>
+    </div><!--col md 6-->
 
     <div class="col-md-6">
       <h2>Pending Challenges</h2>
       <% @pending_challenges.each do |challenge| %>
         <div class="challenge-block">
           <%= render partial: 'partials/challenge_details', locals: {challenge: challenge} %>
-          <% #unless challenge.status == "pending" %>
-          <%= link_to "Delete", challenge_path(challenge), method: :delete, :class=> "btn btn-default delete-button"%>
-          <% #end %>
         </div><!--challenge-block-->
       <% end %>
-
     </div><!--col-->
+
   </div><!--row-->
 </div><!--dashboard_content-->

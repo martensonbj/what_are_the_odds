@@ -1,27 +1,27 @@
+<h3>Start A Conversation!</h3>
 <div class="post-message-form">
-  <h3>Send A Message!</h3>
-  <% if challenger? %>
-  To: <%= User.find(@challenge.assigned_user).name %>
-  <% elsif challengee? %>
-  To: <%= User.find(@challenge.user_id) %>
-  <% end %>
 
   <%= form_for @post, method: :post do |f| %>
-  <%= f.label :body %>
-  <%= f.text_area :body %>
+    <%= f.text_area :body, placeholder: 'Enter a message!' %>
 
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.hidden_field :challenge_id, :value => @challenge.id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :challenge_id, :value => @challenge.id %>
   <%= f.submit "Post Message!", class: "btn btn-default" %>
   <% end %>
 </div>
 
-<% if @challenge.posts.any? %>
-  <% @posts.each do |post| %>
-    <div>
-        From: <%= image_tag "#{User.find(post.user_id).picture}"  %>
-        <%= post.body %>
-        <%= post.created_at %>
-    </div>
+<div class="conversation">
+  <% if @challenge.posts.any? %>
+    <% @posts.each do |post| %>
+      <table class="table table-bordered">
+        <tr>
+          <td><%= image_tag "#{User.find(post.user_id).picture}"%></td>
+          <td><%= post.body %></td>
+          <td>Sent:<br>
+            <%= post.created_at %>
+          </td>
+        </tr>
+      </table>
+    <% end %>
   <% end %>
-<% end %>
+</div>

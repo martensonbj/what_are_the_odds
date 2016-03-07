@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <% if both_guesses_submitted? && @challenge.status == "accepted" && challengee? %>
+    <% if @challenge.both_guesses_submitted? && @challenge.status == "accepted" && challengee? %>
       <div class="submit-video">
         <%= form_for @challenge, :html => {class: "add-video-form"}, :multipart => true do |f| %>
           <%= f.label :response_video, "Submit Proof!" %>

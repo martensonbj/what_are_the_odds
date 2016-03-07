@@ -12,14 +12,6 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  def authorize!
-    redirect_to root_path unless current_user
-  end
-
-  def has_pending_challenges?
-    current_user.challenges.where(status: "accepted")
-  end
-
   def challengee?
     challenge = Challenge.find(params[:id])
     current_user.id == challenge.assigned_user.to_i
@@ -30,9 +22,12 @@ class ApplicationController < ActionController::Base
     current_user.id == challenge.user_id
   end
 
-  def both_guesses_submitted?
-    challenge = Challenge.find(params[:id])
-    challenge.challenger_guess && challenge.challengee_guess
+  def authorize!
+    redirect_to root_path unless current_user
+  end
+
+  def has_pending_challenges?
+    current_user.challenges.where(status: "accepted")
   end
 
 end
