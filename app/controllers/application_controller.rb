@@ -22,10 +22,6 @@ class ApplicationController < ActionController::Base
     current_user.id == challenge.user_id
   end
 
-  def authorize!
-    redirect_to root_path unless current_user
-  end
-
   def has_pending_challenges?
     current_user.challenges.where(status: "accepted")
   end

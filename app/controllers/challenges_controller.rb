@@ -11,6 +11,8 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.new
     fb = FriendBuilder.new
     @friends = fb.build_friends(current_user)
+    fs = FacebookService.new(current_user)
+    fs.email
   end
 
   def edit

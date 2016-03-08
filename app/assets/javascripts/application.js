@@ -14,13 +14,3 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap-sprockets
-
-$(document).ready(function(){
-
-FB.ui({
-  method: 'share',
-  href: 'https://odds-roulette.herokuapp.com',
-}, function(response){});
-
-
-});
