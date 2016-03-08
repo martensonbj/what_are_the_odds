@@ -8,7 +8,7 @@
     <%= render partial: 'partials/challenge_details', locals: {challenge: @challenge} %>
   </div>
 
-  <% if current_user.id == @challenge.assigned_user.to_i  %>
+  <% if challengee? %>
     <div class="col-md-6">
       <%= form_for @challenge, :html => {class: "edit-challenge-form"} do |f| %>
         <div id="challenge-accepted">
@@ -21,11 +21,11 @@
           <p>Guess A Number!</p>
           <%= f.text_field :challengee_guess, placeholder: '#',  class: 'challengee-guess' %>
         </div><!--challenge-accepted-->
-        <%= f.hidden_field :status, :value => 'accepted' %>
+        <%= f.hidden_field :status, :value => "accepted" %>
         <%= f.submit "Submit!", class: "btn-default btn" %>
       <% end %>
     </div>
-  <% else%>
+  <% elsif challenger?%>
     <div class="col-md-6">
       <%= form_for @challenge, :html => {class: "edit-challenge-form"} do |f| %>
         <div id="challenge-accepted">
@@ -33,8 +33,8 @@
           <h3>Odds Are 1-<%=@challenge.odds%></h3><br>
           <p>Guess A Number!</p>
           <%= f.text_field :challenger_guess, placeholder: '#',  class: 'challenger-guess' %>
-
         </div><!--challenge-accepted-->
+        <%= f.hidden_field :status, :value => "activated" %>
         <%= f.submit "Submit!", class: "btn-default btn" %>
       <% end %>
     </div>

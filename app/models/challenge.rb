@@ -1,11 +1,15 @@
 class Challenge < ActiveRecord::Base
   belongs_to :user
-  has_many :posts
+  has_many :posts, dependent: :destroy
   enum status: %w(pending completed accepted declined activated dead)
 
   validates :title, presence: true
   validates :message, presence: true
   validates :assigned_user, presence: true
+
+  def challenge_completed?
+    self.response_video?
+  end
 
   def both_guesses_submitted?
     self.challenger_guess && self.challengee_guess

@@ -27,6 +27,12 @@
   </tr>
 </table>
 
+<% if current_user.id == challenge.assigned_user.to_i && !challenge.challengee_guess && challenge.status != "declined" %>
+  <p class="your-move">
+    Your Move!
+  </p>
+<% end %>
+
 <div class="expiration-date">
   Expires In: <%= distance_of_time_in_words(challenge.expiration_date, Time.now)%></span>
 </div>

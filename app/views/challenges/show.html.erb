@@ -4,8 +4,14 @@
     <%= render partial: 'partials/challenge_details', locals: {challenge: @challenge} %>
 
     <% if @challenge.status == "pending" && @challenge.assigned_user.to_i == current_user.id && !@challenge.challengee_guess %>
+
       <%= link_to "Accept Challenge!", edit_challenge_path(@challenge), class: "btn-default btn accept-button"%>
-      <%= link_to "Nope!", "#", class: "btn-default btn decline-button" %>
+
+      <%= form_for @challenge do |f| %>
+        <%= f.hidden_field :status, :value => "declined" %>
+        <%= f.submit "Nope!", class: "btn btn-default"%>
+      <% end %>
+
     <% end %>
 
     <% if @challenge.status == "accepted" && @challenge.user_id == current_user %>
@@ -26,31 +32,33 @@
       <h3 class="start-countdown btn btn-default"> START COUNTDOWN! <span class="count"></span> </h3>
     <% end %>
 
-    <div class="row answers">
-      <div class="col-md-6 answer-box">
-        <% if challenger? %>
-          <h3>YOUR GUESS</h3>
-        <% else %>
-          <h3>THEIR GUESS</h3>
-        <% end %>
-        <div class="show-answers" >
-          <%= @challenge.challenger_guess %><br>
+    <% unless @challenge.status == "dead" || @challenge.status == "completed" || @challenge.status == "declined" %>
+      <div class="row answers">
+        <div class="col-md-6 answer-box">
+          <% if challenger? %>
+            <h3>YOUR GUESS</h3>
+          <% else %>
+            <h3>THEIR GUESS</h3>
+          <% end %>
+          <div class="show-answers" >
+            <%= @challenge.challenger_guess %><br>
+          </div>
+        </div>
+
+        <div class="col-md-6 answer-box">
+          <% if challengee? %>
+            <h3>YOUR GUESS</h3>
+          <% else %>
+            <h3>THEIR GUESS</h3>
+          <% end %>
+          <div class="show-answers" >
+            <%= @challenge.challengee_guess %></h1>
+          </div>
         </div>
       </div>
+    <% end %>
 
-      <div class="col-md-6 answer-box">
-        <% if challengee? %>
-          <h3>YOUR GUESS</h3>
-        <% else %>
-          <h3>THEIR GUESS</h3>
-        <% end %>
-        <div class="show-answers" >
-          <%= @challenge.challengee_guess %></h1>
-        </div>
-      </div>
-    </div>
-
-    <% if @challenge.both_guesses_submitted? && @challenge.status == "accepted" && challengee? %>
+    <% if @challenge.challenge_activated? %>
       <div class="submit-video">
         <%= form_for @challenge, :html => {class: "add-video-form"}, :multipart => true do |f| %>
           <%= f.label :response_video, "Submit Proof!" %>
@@ -93,6 +101,7 @@ $(document).ready(function(){
       counter--;
     }, 1000);
   });
+
 })
 
 </script>

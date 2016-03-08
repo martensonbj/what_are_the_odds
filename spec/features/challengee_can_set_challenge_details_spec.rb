@@ -24,6 +24,6 @@ RSpec.feature "ChallengeeCanSetChallengeDetails", type: :request do
         fill_in 'challenge[challengee_guess]', with: "5"
         click_on "Submit"
 
-        expect(current_path).to eq "/challenges/#{challenge.id}"
+        expect(challenge.status).to eq("accepted")
   end
 end

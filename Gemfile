@@ -15,6 +15,7 @@ gem 'faraday'
 gem 'rails_12factor', group: :production
 gem 'twilio-ruby'
 gem 'pry-byebug'
+gem 'font-awesome-sass'
 
 
 group :development, :test do

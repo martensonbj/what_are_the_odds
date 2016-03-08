@@ -4,23 +4,26 @@
   <title>What Are The Odds</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= stylesheet_link_tag    'animate', media: 'all' %>
+  <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css' %>
   <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag "//cameratag.com/v7/js/cameratag.js" %>
 
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1"></head>
 <body>
 
 <%= render partial: 'partials/main_navigation' %>
-
-<div class="container">
-  <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>">
-      <%= value %>
+<main>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+          <%= value %>
+        </div>
+      <% end %>
+      <%= yield %>
     </div>
-  <% end %>
-  <%= yield %>
-</div>
+</main>
+<%= render partial: 'partials/footer' %>
 
-<%= javascript_include_tag "//cameratag.com/v7/js/cameratag.js" %>
 </body>
 </html>

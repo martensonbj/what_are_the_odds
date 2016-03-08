@@ -1,6 +1,6 @@
 class ChallengesController < ApplicationController
-  helper_method :check_status
-  before_action :find_challenge, only: [:edit, :update, :destroy]
+  before_action :find_challenge, only: [:edit, :update, :destroy, :show, :decline_challenge]
+  before_action :get_posts, only: [:update, :show]
 
   def index
       @sent_challenges = Challenge.all.where(user_id: current_user.id)
@@ -17,9 +17,8 @@ class ChallengesController < ApplicationController
   end
 
   def update
-    @post = Post.new
-    @posts = Post.where(challenge_id: @challenge.id)
     if @challenge.update(challenge_params)
+      flash.now[:error] = "Challenge Updated!"
       render :show
     else
       flash.now[:error] = "All fields must be filled in."
@@ -38,9 +37,6 @@ class ChallengesController < ApplicationController
   end
 
   def show
-    check_status
-    @post = Post.new
-    @posts = Post.where(challenge_id: @challenge.id)
   end
 
   def destroy
@@ -48,25 +44,20 @@ class ChallengesController < ApplicationController
     redirect_to challenges_path
   end
 
+
   private
 
   def challenge_params
-    params.require(:challenge).permit(:title, :assigned_user, :expiration_date, :message, :video, :user_id, :challenger_guess, :challengee_guess, :odds)
-  end
-
-  def check_status
-    find_challenge
-    if @challenge.guesses_match?
-      @challenge.update_attributes(status: "activated")
-    elsif @challenge.guesses_dont_match?
-      @challenge.update_attributes(status: "dead")
-    elsif @challenge.challengee_guess
-      @challenge.update_attributes(status: "accepted")
-    end
+    params.require(:challenge).permit(:title, :assigned_user, :expiration_date, :message, :video, :user_id, :challenger_guess, :challengee_guess, :odds, :status)
   end
 
   def find_challenge
     @challenge = Challenge.find(params[:id])
+  end
+
+  def get_posts
+    @post = Post.new
+    @posts = Post.where(challenge_id: @challenge.id)
   end
 
 end
