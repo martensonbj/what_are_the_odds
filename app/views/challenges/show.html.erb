@@ -61,12 +61,19 @@
     <% if @challenge.challenge_activated? %>
       <div class="submit-video">
         <%= form_for @challenge, :html => {class: "add-video-form"}, :multipart => true do |f| %>
-          <%= f.label :response_video, "Submit Proof!" %>
-          <camera id='response_video' data-app-id='a-a6486a40-c536-0133-4d8a-12819bc4053b
-    '></camera>
 
+        <div class="col-md-8 col-md-offset-2">
+          <div id="container" class="new_camera">
+            <h4>Challenge Complete?</h4>
+            <%= f.text_area :response_message, placeholder: 'What did you do to complete the challenge?' %>
+          </div>
+        <!-- | <a id="record-button">Record Audio</a> |
+          <a id="stop-button">Stop</a> |
+          <a id="save-button">Save</a> | -->
           <%= f.hidden_field :status, :value => 'completed' %>
+          <br>
           <%= f.submit "Send Proof!", class: "btn btn-default" %>
+        </div>
         <% end %>
       </div>
     <% end %>

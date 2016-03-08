@@ -22,6 +22,8 @@ $success-text: #aaa;
 $alert-text: #ff0000;
 $challenge-title-button: rgb(169, 67, 66);
 $challenge-title-button-hover: rgb(199, 57, 55);
+$complete-challenge-text: #333;
+
 .show-answers {
   display: none;
   color: red;
@@ -164,7 +166,7 @@ body.body-landing-page {
     margin: 25px;
     text-align: center;
     box-shadow: 1px 1px 30px #333;
-    h4 {
+    h3 {
       border-bottom: 1px solid #aaa;
       padding-bottom: 15px;
     }
@@ -312,4 +314,9 @@ footer {
 }
 #videoElement {
     background-color: #666;
+}
+.complete-challenge-text {
+  color: $complete-challenge-text;
+  margin-top: -5px;
+  border-bottom: none;
 }

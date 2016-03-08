@@ -1,5 +1,5 @@
 
-<h4><%= link_to challenge.title, challenge_path(challenge.id)%></h4>
+<h3><%= link_to challenge.title, challenge_path(challenge.id)%></h3>
 
   <p>
     TEMPORARY
@@ -22,9 +22,14 @@
     <td><%= link_to "Delete", challenge_path(challenge), method: :delete, :class=> "btn btn-default delete-button"%>
 </td>
   </tr>
-  <tr>
-
-  </tr>
+  <% if challenge.response_message %>
+    <tr>
+      <td colspan="4">
+        <h4 class="complete-challenge-text">Challenge Completed!</h4>
+        <%= challenge.response_message %>
+      </td>
+    </tr>
+  <% end %>
 </table>
 
 <% if current_user.id == challenge.assigned_user.to_i && !challenge.challengee_guess && challenge.status != "declined" %>
