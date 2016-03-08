@@ -3,13 +3,12 @@ require 'rails_helper'
 RSpec.describe SessionsController, type: :controller do
 
   before do
-      request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
+    request.env['omniauth.auth'] = call_mock_hash
   end
 
   describe "#create" do
     it "successfully creates a session" do
-      session[:user_id].should be_nil
-      get :create, provider: :facebook
+      post :create, provider: :facebook
       expect(session[:user_id]).to_not be_nil
     end
   end

@@ -33,6 +33,23 @@ VCR.configure do |config|
 end
 
 RSpec.configure do |config|
+
+  def call_mock_hash
+    OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+        :provider => 'facebook',
+        :uid => '10105044885670557',
+        :info => {
+          :name => 'Brenna Martenson',
+          :link => 'https://www.facebook.com/app_scoped_user_id/10105044885670557/',
+          :picture => 'http://graph.facebook.com/10105044885670557/picture'
+        },
+        :credentials => {
+          :token => ENV["TOKEN"]
+        }
+      })
+  end
+
+
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
     DatabaseCleaner.strategy = :transaction
@@ -94,4 +111,11 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
+end
+
+OmniAuth.config.test_mode = true
+Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
+
+def generate_user
+  User.create!(provider: "facebook", uid: ENV["TEST_UID"], name: "Brenna Martenson", link: "https://www.facebook.com/app_scoped_user_id/10105044885670557/", picture: "http://graph.facebook.com/10105044885670557/picture", token: ENV["TOKEN"])
 end

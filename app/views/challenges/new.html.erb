@@ -36,52 +36,16 @@
     </div>
 
     <div class="col-md-8 col-md-offset-2">
-      <%= f.label :challenge_video, "Record It! (optional)" %>
-      <camera id='new_camera' data-app-id='a-a6486a40-c536-0133-4d8a-12819bc4053b'></camera>
-      <br>
-      | <%= link_to "Stop Recording", id: 'stopRecording', class: 'btn btn-default' %> |
-      <%= link_to "Save", id: 'saveRecording', class: 'btn btn-default' %> |
-      <%= link_to "GetVideo", id: 'getNewVideo', class: 'btn btn-default' %> |
+
+      <div id="container" class="new_camera">
+        NEW ELEMENT GOES HERE
+      </div>
+    | <a id="record-button">Record Audio</a> |
+      <a id="stop-button">Stop</a> |
+      <a id="save-button">Save</a> |
     </div>
   </div>
 
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit "Send Challenge!", class: "btn btn-default" %>
 <% end  %>
-
-<script>
-$('document').ready(function(){
-  CameraTag.setup();
-
-  CameraTag.observe('new_camera', "initialized", function(){
-    myCamera = CameraTag.cameras["new_camera"];
-    console.log(myCamera.getState())
-  });
-
-  CameraTag.observe('new_camera', "readyToRecord", function(){
-    myCamera = CameraTag.cameras["new_camera"]
-    console.log("In readyToRecord")
-    console.log(myCamera.getState())
-
-    myCamera.record();
-
-    $('#stopRecording').on('click', function(){
-      myCamera.stopRecording();
-      console.log("Stopped recording")
-      console.log(myCamera.getState())
-    });
-
-    $('#saveRecording').on('click', function(){
-      myCamera.publish();
-      $('#new_video').data('uuid', 'something');
-    });
-
-    $('#getNewVideo').on('click', function(){
-      myCamera.getVideo();
-    });
-  });
-
-  CameraTag.observe('new_camera', 'published', function(){
-    alert('this video has been published!')
-  });
-});
-</script>

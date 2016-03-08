@@ -14,6 +14,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url(https://fonts.googleapis.com/css?family=News+Cycle:400,700);
+
+
 $primary-button-color: #333;
 $primary-button-color-hover: rgb(107, 107, 107);
 $success-text: #aaa;
@@ -36,6 +38,10 @@ body {
 }
 h1 {
   text-align: center;
+}
+main {
+  padding-bottom: 25px;
+  margin-bottom: 30px;
 }
 a:hover {
   text-decoration: none;
@@ -284,4 +290,26 @@ textarea#challenge_message {
   .conversation {
     margin-top: 25px;
   }
+}
+footer {
+  background-color: #000;
+  height: 60px;
+  .footer-links {
+    font-size: 30px;
+    margin: 0px 10px;
+    position: relative;
+    top: 8px;
+  }
+}
+.your-move {
+  color: $alert-text;
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+#container {
+    border: 10px #333 solid;
+}
+#videoElement {
+    background-color: #666;
 }

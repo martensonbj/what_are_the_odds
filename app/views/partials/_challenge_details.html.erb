@@ -17,7 +17,7 @@
   </thead>
   <tr>
     <td><%= User.find(challenge.user_id).name%></td>
-    <td><%= User.find(challenge.assigned_user).name %></td>
+    <td><%= User.find(challenge.assigned_user.to_i).name %></td>
     <td><%= challenge.status %></td>
     <td><%= link_to "Delete", challenge_path(challenge), method: :delete, :class=> "btn btn-default delete-button"%>
 </td>
@@ -26,6 +26,12 @@
 
   </tr>
 </table>
+
+<% if current_user.id == challenge.assigned_user.to_i && !challenge.challengee_guess && challenge.status != "declined" %>
+  <p class="your-move">
+    Your Move!
+  </p>
+<% end %>
 
 <div class="expiration-date">
   Expires In: <%= distance_of_time_in_words(challenge.expiration_date, Time.now)%></span>

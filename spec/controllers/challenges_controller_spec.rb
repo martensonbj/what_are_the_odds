@@ -4,10 +4,16 @@ RSpec.describe ChallengesController, type: :controller do
   fixtures :users, :challenges
 
   before :each do
-    visit '/'
-    click_on "Login with Facebook"
-    user = User.last
-    ApplicationController.any_instance.stubs(:current_user).returns(user)
+    @user = generate_user
+    ApplicationController.any_instance.stubs(:current_user).returns(@user)
+    @user_2 = users(:user_2)
+
+    @challenge = Challenge.create(title: "Pending Challenge 3",
+      assigned_user: @user_2.id,
+      expiration_date: "2016-04-02 22:47:00",
+      message: "What are the odds 1",
+      user_id: @user.id,
+      status: 0)
   end
 
   describe "GET #index" do
@@ -20,17 +26,48 @@ RSpec.describe ChallengesController, type: :controller do
 
   describe "GET #show" do
     it "responds with success" do
-      
-      challenge = Challenge.create(title: "Pending Challenge 3",
-        assigned_user: User.last.id,
-        expiration_date: "2016-04-02 22:47:00",
-        message: "What are the odds 1",
-        user_id: User.first.id,
-        status: 0)
-
-      get :show
+      get :show, id: @challenge.id
       expect(response).to be_success
       expect(response).to have_http_status(200)
+    end
+  end
+
+  describe "GET #edit/:id" do
+    it "responds with success" do
+      get :edit, id: @challenge.id
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+  end
+
+  describe "PUT #update/:id" do
+    let(:attr) do
+      {odds: 8, challengee_guess: 5}
+    end
+
+    before :each do
+      put :update, id: @challenge.id, challenge: attr
+      @challenge.reload
+    end
+
+    it { expect(response).to have_http_status(200) }
+    it { expect(@challenge.odds).to eq(attr[:odds]) }
+    it { expect(@challenge.challengee_guess).to eq(attr[:challengee_guess]) }
+  end
+
+  describe "GET #new" do
+    it "responds with success" do
+      get :new
+      expect(response).to be_success
+      expect(response).to have_http_status(200)
+    end
+  end
+
+  describe "DELETE #destroy/:id" do
+    it "deletes the user" do
+      expect {
+        delete :destroy, id: @challenge.id  
+      }.to change(Challenge, :count).by(-1)
     end
   end
 
