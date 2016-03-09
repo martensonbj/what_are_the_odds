@@ -7,6 +7,11 @@ class Challenge < ActiveRecord::Base
   validates :message, presence: true
   validates :assigned_user, presence: true
 
+  has_many :headshot_photos, :as => :capturable
+
+  has_attached_file :image_upload
+  do_not_validate_attachment_file_type :image_upload
+
   def challenge_completed?
     self.response_video?
   end

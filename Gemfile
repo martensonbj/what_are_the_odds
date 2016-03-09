@@ -16,6 +16,9 @@ gem 'rails_12factor', group: :production
 gem 'twilio-ruby'
 gem 'pry-byebug'
 gem 'font-awesome-sass'
+gem 'headshot'
+gem "paperclip"
+gem 'aws-sdk', "~>1.66.0"
 
 
 group :development, :test do

@@ -4,8 +4,8 @@
 <div class="row text-friend">
   <h4>Text A Friend to Join!</h4>
   <%= form_for :text, url: '/texts/send_text_message', method: :post do |f| %>
-  <%= f.text_field :target_phone_number %>
-  <%= f.submit "Send Text!", class: "btn btn-default" %>
+    <%= f.text_field :target_phone_number %>
+    <%= f.submit "Send Text!", class: "btn btn-default" %>
   <% end %>
 </div>
 <br>
@@ -16,17 +16,15 @@
     <div class="col-md-6">
       <%= f.text_field :title, placeholder: 'Challenge Title' %>
       <br>
-
       <%= f.text_area :message, placeholder: 'What Are The Odds...' %>
       <br>
     </div>
 
     <div class="col-md-6">
       <% if current_user.friends %>
-      <%= f.label :assigned_user, "Send To:" %>
-      <%= f.select(:assigned_user, current_user.friends.map do |friend|
-        [friend.name, friend.id]
-      end)%>
+        <%= f.label :assigned_user, "Send To:" %>
+        <%= f.select(:assigned_user, current_user.friends.map do |friend|
+        [friend.name, friend.id] end)%>
       <% end %>
       <br>
 
@@ -36,16 +34,16 @@
     </div>
 
     <div class="col-md-8 col-md-offset-2">
-
-      <div id="container" class="new_camera">
-        NEW ELEMENT GOES HERE
+      <div class="headshot">
+        <%= headshot_default_config(Rails.application.config.session_options[:key], headshot_capture_path) %>
+        <%= headshot_camera %>
+        <br/><br/>
+        <%= headshot_snap_button('Shoot')%>
       </div>
-    | <a id="record-button">Record Audio</a> |
-      <a id="stop-button">Stop</a> |
-      <a id="save-button">Save</a> |
-    </div>
+
   </div>
 
+  <%= f.hidden_field :response_video, value: HeadshotPhoto.last.image_file_name[1..-1] %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit "Send Challenge!", class: "btn btn-default" %>
 <% end  %>

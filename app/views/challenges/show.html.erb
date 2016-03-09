@@ -4,14 +4,11 @@
     <%= render partial: 'partials/challenge_details', locals: {challenge: @challenge} %>
 
     <% if @challenge.status == "pending" && @challenge.assigned_user.to_i == current_user.id && !@challenge.challengee_guess %>
-
       <%= link_to "Accept Challenge!", edit_challenge_path(@challenge), class: "btn-default btn accept-button"%>
-
       <%= form_for @challenge do |f| %>
         <%= f.hidden_field :status, :value => "declined" %>
         <%= f.submit "Nope!", class: "btn btn-default"%>
       <% end %>
-
     <% end %>
 
     <% if @challenge.status == "accepted" && @challenge.user_id == current_user %>
@@ -59,8 +56,13 @@
     <% end %>
 
     <% if @challenge.challenge_activated? %>
-      <div class="submit-video">
-        <%= form_for @challenge, :html => {class: "add-video-form"}, :multipart => true do |f| %>
+      <%= form_for @challenge, :multipart => true do |f| %>
+        <div class="headshot">
+          <%= headshot_default_config(Rails.application.config.session_options[:key], headshot_capture_path) %>
+          <%= headshot_camera %>
+          <br/><br/>
+          <%= headshot_snap_button('Shoot')%>
+        </div>
 
         <div class="col-md-8 col-md-offset-2">
           <div id="container" class="new_camera">
@@ -74,9 +76,8 @@
           <br>
           <%= f.submit "Send Proof!", class: "btn btn-default" %>
         </div>
-        <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    <% end %><!-- if challenge activated -->
   </div><!--challenge block-->
 
   <div class="challenge-posts col-md-6">

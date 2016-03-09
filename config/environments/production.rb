@@ -3,6 +3,15 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
+  Paperclip.options[/usr/local/bin/convert] = "/usr/local/bin/"
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -32,7 +41,7 @@ Rails.application.configure do
 
   config.serve_static_assets = true
   config.assets.compile = true #bjm WAS true
-  
+
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true

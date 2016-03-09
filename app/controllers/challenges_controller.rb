@@ -1,6 +1,7 @@
 class ChallengesController < ApplicationController
   before_action :find_challenge, only: [:edit, :update, :destroy, :show, :decline_challenge]
   before_action :get_posts, only: [:update, :show]
+  helper :headshot
 
   def index
       @sent_challenges = Challenge.all.where(user_id: current_user.id)
@@ -13,6 +14,7 @@ class ChallengesController < ApplicationController
     @friends = fb.build_friends(current_user)
     fs = FacebookService.new(current_user)
     fs.email
+    @headshot = headshot_capture_path
   end
 
   def edit
@@ -39,6 +41,7 @@ class ChallengesController < ApplicationController
   end
 
   def show
+    # @photo = HeadshotPhoto.last.image_file_path
   end
 
   def destroy

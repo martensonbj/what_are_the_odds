@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post "headshot/capture" => 'headshot#capture', :as => :headshot_capture
   root to: 'home#index'
   get '/dashboard', to: 'users#show'
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308055727) do
+ActiveRecord::Schema.define(version: 20160309210422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,15 +22,19 @@ ActiveRecord::Schema.define(version: 20160308055727) do
     t.datetime "expiration_date"
     t.string   "message"
     t.string   "challenge_video"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "user_id"
-    t.integer  "status",           default: 0
+    t.integer  "status",                    default: 0
     t.integer  "challenger_guess"
     t.integer  "challengee_guess"
     t.integer  "odds"
     t.string   "response_video"
     t.string   "response_message"
+    t.string   "image_upload_file_name"
+    t.string   "image_upload_content_type"
+    t.integer  "image_upload_file_size"
+    t.datetime "image_upload_updated_at"
   end
 
   add_index "challenges", ["user_id"], name: "index_challenges_on_user_id", using: :btree
@@ -41,6 +45,25 @@ ActiveRecord::Schema.define(version: 20160308055727) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "headshot_photos", force: :cascade do |t|
+    t.string   "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.integer  "capturable_id"
+    t.string   "capturable_type"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "challenge_id"
+    t.string   "image_upload_file_name"
+    t.string   "image_upload_content_type"
+    t.integer  "image_upload_file_size"
+    t.datetime "image_upload_updated_at"
+  end
+
+  add_index "headshot_photos", ["challenge_id"], name: "index_headshot_photos_on_challenge_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "body"
@@ -67,6 +90,7 @@ ActiveRecord::Schema.define(version: 20160308055727) do
   end
 
   add_foreign_key "challenges", "users"
+  add_foreign_key "headshot_photos", "challenges"
   add_foreign_key "posts", "challenges"
   add_foreign_key "posts", "users"
 end
