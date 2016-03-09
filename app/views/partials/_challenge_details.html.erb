@@ -21,8 +21,8 @@
     <td><%= User.find(challenge.assigned_user.to_i).name %></td>
     <td><%= challenge.status %></td>
     <td>
-      <% if @response_photo %>
-        <%= image_tag "http://s3.amazonaws.com/oddsroulette/#{@response_photo_file_path}", class: "headshot-image"%>
+      <% if @images %>
+        <%= image_tag "https://s3-us-west-2.amazonaws.com/oddsroulette/#{@image}", class: "headshot-image"%>
       <% end %>
     </td>
     <td><%= link_to "Delete", challenge_path(challenge), method: :delete, :class=> "btn btn-default delete-button"%>

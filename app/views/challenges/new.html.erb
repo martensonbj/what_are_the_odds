@@ -43,7 +43,6 @@
 
   </div>
 
-  <%= f.hidden_field :response_video, value: HeadshotPhoto.last.image_file_name[1..-1] %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit "Send Challenge!", class: "btn btn-default" %>
 <% end  %>

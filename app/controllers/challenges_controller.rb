@@ -41,7 +41,10 @@ class ChallengesController < ApplicationController
   end
 
   def show
-    # @photo = HeadshotPhoto.last.image_file_path
+    bucket = Bucket.new
+    @images = bucket.get_aws_photos
+    @image = @images["headshot_capture_9800_1457563816.jpg"]
+    response_image = @
   end
 
   def destroy
