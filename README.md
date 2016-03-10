@@ -4,7 +4,7 @@
 
 Similar to truth or dare, this app allows you to challenge your friends to do outlandish things in the name of debauchery. A user can initiate a challenge to another user, asking them to accomplish a task by a certain date. The challengee then has the right to establish a range of numbers (2 - 10) that make the "odds" of acting out said challenge more or less likely. After the odds are established, both users guess a number. If that number matches, the challenge must be completed by the specified date. If not, the challenged user is off the hook.  
 
-[http://recordit.co/XLcias44fK]
+![](http://recordit.co/XLcias44fK)
 
 ### Problem
 
