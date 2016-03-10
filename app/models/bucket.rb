@@ -2,7 +2,6 @@ require 'aws-sdk'
 
 class Bucket
   attr_reader :bucket
-  attr_accessor :original_filename
 
   def initialize
     access_key = ENV["AWS_ACCESS_KEY_ID"]

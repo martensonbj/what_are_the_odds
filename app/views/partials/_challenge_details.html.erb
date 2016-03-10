@@ -1,5 +1,6 @@
 
 <h3><%= link_to challenge.title, challenge_path(challenge.id)%></h3>
+<p class="align-center">Status: <%= challenge.status.upcase %></p>
 
   <p>
     TEMPORARY
@@ -11,26 +12,36 @@
 <table class = "table table-bordered">
   <thead>
     <th>From</th>
+    <th>Challenge Shot</th>
     <th>To</th>
-    <th>Status</th>
-    <th>Response Video</th>
+    <th>Response Shot</th>
     <th>Delete?</th>
   </thead>
   <tr>
     <td><%= User.find(challenge.user_id).name%></td>
-    <td><%= User.find(challenge.assigned_user.to_i).name %></td>
-    <td><%= challenge.status %></td>
     <td>
-      <% if @images %>
-        <%= image_tag "https://s3-us-west-2.amazonaws.com/oddsroulette/#{@image}", class: "headshot-image"%>
+      <% if @challenge_video %>
+        <%= image_tag "https://s3-us-west-2.amazonaws.com/oddsroulette/#{@challenge_video}", class: "headshot-image"%>
+      <% else %>
+        <%= image_tag 'default-user-icon-profile.png' %>
+      <% end %>    </td>
+    <td><%= User.find(challenge.assigned_user.to_i).name %></td>
+    <td>
+      <% if @response_video %>
+        <%= image_tag "https://s3-us-west-2.amazonaws.com/oddsroulette/#{@response_video}", class: "headshot-image"%>
+      <% else %>
+        <%= image_tag 'default-user-icon-profile.png' %>
       <% end %>
     </td>
     <td><%= link_to "Delete", challenge_path(challenge), method: :delete, :class=> "btn btn-default delete-button"%>
 </td>
   </tr>
+  <tr>
+    <td colspan="6"><%= challenge.message %></td>
+  </tr>
   <% if challenge.response_message %>
     <tr>
-      <td colspan="4">
+      <td colspan="6">
         <h4 class="complete-challenge-text">Challenge Completed!</h4>
         <%= challenge.response_message %>
       </td>

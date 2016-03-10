@@ -43,8 +43,9 @@ class ChallengesController < ApplicationController
   def show
     bucket = Bucket.new
     @images = bucket.get_aws_photos
-    @image = @images["headshot_capture_9800_1457563816.jpg"]
-    response_image = @
+    @response_video = @images[@challenge.response_video]
+    @challenge_video = @images[@challenge.challenge_video]
+    binding.pry
   end
 
   def destroy

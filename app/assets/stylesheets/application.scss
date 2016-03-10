@@ -183,6 +183,12 @@ body.body-landing-page {
       letter-spacing: 10px;
       margin-top: -10px;
     }
+    img {
+      max-width: 65px;
+    }
+    table th {
+      text-align:center;
+    }
   }
 }
 /*** FORMS ***/
@@ -262,6 +268,9 @@ textarea#challenge_message {
   }
   .show-answers {
     font-size: 40px;
+  }
+  img {
+    max-width: 65px;
   }
 }
 
