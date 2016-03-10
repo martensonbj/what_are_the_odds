@@ -16,6 +16,7 @@ class ChallengesController < ApplicationController
  end
 
   def edit
+    @recorded_image = session[:current_image].split('/').last
   end
 
   def update

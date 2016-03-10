@@ -7,7 +7,7 @@
       <% if @sent_challenges %>
         <% @sent_challenges.each do |challenge| %>
         <div class="challenge-block">
-          <%= render partial: 'partials/challenge_details', locals: {challenge: challenge} %>
+          <%= render partial: 'partials/index_challenge_details', locals: {challenge: challenge} %>
 
           <% if challenge.challengee_accepted? %>
             <p>Challenge Has Been Accepted! Add Guess!</p>
@@ -28,7 +28,7 @@
       <% if @pending_challenges %>
         <% @pending_challenges.each do |challenge| %>
           <div class="challenge-block">
-            <%= render partial: 'partials/challenge_details', locals: {challenge: challenge} %>
+            <%= render partial: 'partials/index_challenge_details', locals: {challenge: challenge} %>
           </div><!--challenge-block-->
         <% end %>
       <% end %>

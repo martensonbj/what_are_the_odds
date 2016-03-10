@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def has_pending_challenges?
-    current_user.challenges.where(status: "accepted")
+    current_user.challenges.where(status: "active")
   end
 
   def headshot_post_save(filepath)

@@ -20,6 +20,10 @@ class Challenge < ActiveRecord::Base
     self.both_guesses_submitted? && self.guesses_match?
   end
 
+  def guesses_match?
+    self.challenger_guess == self.challengee_guess
+  end
+
   def challengee_accepted?
     self.challengee_guess && !self.challenger_guess
   end

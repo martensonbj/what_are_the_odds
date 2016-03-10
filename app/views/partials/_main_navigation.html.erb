@@ -14,7 +14,8 @@
             <li> <%= link_to 'PENDING CHALLENGES', challenges_path,  class: "challenge-alert" %> </li>
           <% end %>
           <% if current_user %>
-            <li><%= link_to 'Challenge History', challenges_path %></li>
+            <li><%= link_to 'New Challenge', new_challenge_path %> </li>
+            <li><%= link_to 'Challenge Index', challenges_path %></li>
             <li><%= link_to 'Logout', logout_path, method: :delete %></li>
             <li><%= image_tag current_user.picture, alt: current_user.name %></li>
           <% else %>
