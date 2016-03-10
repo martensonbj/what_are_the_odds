@@ -9,7 +9,7 @@
     (Challengee's Guess: <%= challenge.challengee_guess %>)
   </p>
 
-<table class = "table table-bordered">
+<table class = "table table-bordered challenge-details-table">
   <thead>
     <th>From</th>
     <th>Challenge Shot</th>
@@ -20,14 +20,14 @@
   <tr>
     <td><%= User.find(challenge.user_id).name%></td>
     <td>
-      <% if @challenge_video %>
+      <% if challenge.challenge_video %>
         <%= image_tag "https://s3-us-west-2.amazonaws.com/oddsroulette/#{@challenge_video}", class: "headshot-image"%>
       <% else %>
         <%= image_tag 'default-user-icon-profile.png' %>
       <% end %>    </td>
     <td><%= User.find(challenge.assigned_user.to_i).name %></td>
     <td>
-      <% if @response_video %>
+      <% if challenge.response_video %>
         <%= image_tag "https://s3-us-west-2.amazonaws.com/oddsroulette/#{@response_video}", class: "headshot-image"%>
       <% else %>
         <%= image_tag 'default-user-icon-profile.png' %>

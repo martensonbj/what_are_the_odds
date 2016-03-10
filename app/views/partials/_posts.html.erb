@@ -13,13 +13,11 @@
 <div class="conversation">
   <% if @challenge.posts.any? %>
     <% @posts.each do |post| %>
-      <table class="table table-bordered">
+      <table class="table table-bordered text-center">
         <tr>
           <td><%= image_tag "#{User.find(post.user_id).picture}"%></td>
           <td><%= post.body %></td>
-          <td>Sent:<br>
-            <%= post.created_at %>
-          </td>
+          <td><%= post.created_at.strftime("Sent At: %m/%d/%y")%></td>
         </tr>
       </table>
     <% end %>

@@ -14,7 +14,6 @@ class ChallengesController < ApplicationController
     @friends = fb.build_friends(current_user)
     fs = FacebookService.new(current_user)
     fs.email
-    @headshot = headshot_capture_path
   end
 
   def edit
@@ -24,9 +23,6 @@ class ChallengesController < ApplicationController
     if @challenge.update(challenge_params)
       flash.now[:error] = "Challenge Updated!"
       render :show
-    else
-      flash.now[:error] = "All fields must be filled in."
-      render :edit
     end
   end
 

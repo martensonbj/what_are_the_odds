@@ -12,14 +12,4 @@ RSpec.describe FacebookService do
       end
     end
   end
-
-  xdescribe "#email" do
-    it "gets facebook email from current user" do
-      VCR.use_cassette 'get_email' do
-        user = users(:me)
-        fb = FacebookService.new(user)
-        response = fb.email
-      end
-    end
-  end
 end

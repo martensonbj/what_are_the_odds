@@ -23,11 +23,11 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       X-Fb-Trace-Id:
-      - B+YjY3cOhz+
+      - DplOC7x/lbe
       X-Fb-Rev:
-      - '2217228'
+      - '2222534'
       Etag:
-      - '"078dc1a1993d867c9edd7533e022a99625f9b389"'
+      - '"12762bff53cdf17374f01105ff3217a239cf14e3"'
       Pragma:
       - no-cache
       Cache-Control:
@@ -39,18 +39,67 @@ http_interactions:
       Vary:
       - Accept-Encoding
       X-Fb-Debug:
-      - bF6+3YmcocC2D6ETzcUoy7/mo0/rtP5ReN9kzjXOMzJ1H/g3+TjmbpFGMf7RtcDIRqyrY9NtDv+hMt8m5iyGyw==
+      - hefrpBXNbhZpcV8iopIcMgSvp2jflAVaLtkMYrSSixsR5qHpomfpnc3TqnEyy2puKa5pCdQhPNa3Fnqu4BlIRA==
       Date:
-      - Mon, 07 Mar 2016 19:54:39 GMT
+      - Thu, 10 Mar 2016 01:17:05 GMT
       Connection:
       - keep-alive
       Content-Length:
-      - '570'
+      - '590'
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"name":"Dan Winter","id":"10101680646058726"},{"name":"Jordan
-        Lawler","id":"10153961720133622"},{"name":"Lovisa Karin Emelie","id":"10208735000111912"},{"name":"Deb
-        Martenson","id":"1021652391250031"}],"paging":{"next":"https:\/\/graph.facebook.com\/v2.5\/10105044885670557\/friends?access_token=CAAYjPdlkJlEBAM2620TeiMZCic3yq66bngGcZCoToHeafqLPEJZBXIIygKA6QO4sGjJyp81WI43NkuqVfYBHMGjgydKwr6GzU8fJZAi1SLZAbSgMBgWZBiSfEWZAwlFQZCFqUODRYlHZAX1kBOAjfHJPZB4lH9YBzOKUMtq6LmjlO1maH7CFT14hBDyF5TqRXvLcjUQFnyhrT1HotEv5q6QtXrx4HS6DMsbMc6Fs3t5qnVZCkxbT40ILjZBu&limit=25&offset=25&__after_id=enc_AdDS2hX7ib3ZBfoB6Mg8AcMZAoZCir49JXvOxChj6OjUrsdyZBk5nQBfx8xab5oR3nO1Vd3onhKfsUWeLnvx16BUNVut"},"summary":{"total_count":1006}}'
+      string: '{"data":[{"name":"Dan Winter","id":"10101680646058726"},{"name":"Lara
+        Dale","id":"10101003286997069"},{"name":"Jordan Lawler","id":"10153961720133622"},{"name":"Lovisa
+        Karin Emelie","id":"10208735000111912"},{"name":"Deb Martenson","id":"1021652391250031"}],"paging":{"next":"https:\/\/graph.facebook.com\/v2.5\/10105044885670557\/friends?access_token=CAAYjPdlkJlEBAM2620TeiMZCic3yq66bngGcZCoToHeafqLPEJZBXIIygKA6QO4sGjJyp81WI43NkuqVfYBHMGjgydKwr6GzU8fJZAi1SLZAbSgMBgWZBiSfEWZAwlFQZCFqUODRYlHZAX1kBOAjfHJPZB4lH9YBzOKUMtq6LmjlO1maH7CFT14hBDyF5TqRXvLcjUQFnyhrT1HotEv5q6QtXrx4HS6DMsbMc6Fs3t5qnVZCkxbT40ILjZBu&limit=25&offset=25&__after_id=enc_AdDS2hX7ib3ZBfoB6Mg8AcMZAoZCir49JXvOxChj6OjUrsdyZBk5nQBfx8xab5oR3nO1Vd3onhKfsUWeLnvx16BUNVut"},"summary":{"total_count":1008}}'
     http_version: 
-  recorded_at: Mon, 07 Mar 2016 19:54:39 GMT
+  recorded_at: Thu, 10 Mar 2016 01:17:05 GMT
+- request:
+    method: get
+    uri: https://graph.facebook.com/10105044885670557?access_token=CAAYjPdlkJlEBAM2620TeiMZCic3yq66bngGcZCoToHeafqLPEJZBXIIygKA6QO4sGjJyp81WI43NkuqVfYBHMGjgydKwr6GzU8fJZAi1SLZAbSgMBgWZBiSfEWZAwlFQZCFqUODRYlHZAX1kBOAjfHJPZB4lH9YBzOKUMtq6LmjlO1maH7CFT14hBDyF5TqRXvLcjUQFnyhrT1HotEv5q6QtXrx4HS6DMsbMc6Fs3t5qnVZCkxbT40ILjZBu
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Fb-Trace-Id:
+      - A7vvZUcaIia
+      X-Fb-Rev:
+      - '2222534'
+      Etag:
+      - '"4bee7ea3f95e29c66436ed0d26d9333eb94cce30"'
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Facebook-Api-Version:
+      - v2.5
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      X-Fb-Debug:
+      - HdrhxNPj0kiJ9ue73ZeMWgRMMYXUPMKnsZoaa7eogCJlocLaBLZ1yUzE0+Q11/3FpO0Jc2a/33VBl+sVFkedbQ==
+      Date:
+      - Thu, 10 Mar 2016 01:17:05 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '52'
+    body:
+      encoding: UTF-8
+      string: '{"name":"Brenna Martenson","id":"10105044885670557"}'
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 01:17:05 GMT
 recorded_with: VCR 3.0.1

@@ -12,10 +12,6 @@ class Challenge < ActiveRecord::Base
   has_attached_file :image_upload
   do_not_validate_attachment_file_type :image_upload
 
-  def challenge_completed?
-    self.response_video?
-  end
-
   def both_guesses_submitted?
     self.challenger_guess && self.challengee_guess
   end
@@ -26,14 +22,6 @@ class Challenge < ActiveRecord::Base
 
   def challengee_accepted?
     self.challengee_guess && !self.challenger_guess
-  end
-
-  def guesses_match?
-    self.both_guesses_submitted? && (self.challenger_guess == self.challengee_guess)
-  end
-
-  def guesses_dont_match?
-    self.both_guesses_submitted? && (self.challenger_guess != self.challengee_guess)
   end
 
 end

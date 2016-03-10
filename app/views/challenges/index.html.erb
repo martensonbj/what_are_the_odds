@@ -2,7 +2,7 @@
   <%= link_to 'Challenge A Friend!', new_challenge_path, class: "challenge-button" %>
   <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-md-6 sent-challenges">
       <h2>Sent Challenges</h2>
       <% if @sent_challenges %>
         <% @sent_challenges.each do |challenge| %>
@@ -23,7 +23,7 @@
       <% end %>
     </div><!--col md 6-->
 
-    <div class="col-md-6">
+    <div class="col-md-6 pending-challenges">
       <h2>Pending Challenges</h2>
       <% if @pending_challenges %>
         <% @pending_challenges.each do |challenge| %>

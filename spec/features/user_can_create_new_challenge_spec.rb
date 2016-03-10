@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "create new challenge", :type => :feature do
-  fixtures :users
+  fixtures :users, :headshot_photos
   scenario "challenges#new" do
       user = generate_user
       ApplicationController.any_instance.stubs(:current_user).returns(user)

@@ -49,6 +49,21 @@ RSpec.configure do |config|
       })
   end
 
+  def call_bad_hash
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+        :provider => 'github',
+        :uid => 'something_else',
+        :info => {
+          :name => 'Brenna Martenson',
+          :link => 'https://www.facebook.com/app_scoped_user_id/10105044885670557/',
+          :picture => 'http://graph.facebook.com/10105044885670557/picture'
+        },
+        :credentials => {
+          :token => ENV["TOKEN"]
+        }
+      })
+  end
+
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)

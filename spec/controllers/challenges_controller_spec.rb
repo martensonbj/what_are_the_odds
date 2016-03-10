@@ -1,24 +1,33 @@
 require 'rails_helper'
 
 RSpec.describe ChallengesController, type: :controller do
-  fixtures :users, :challenges
+  fixtures :users
 
   before :each do
     @user = generate_user
     ApplicationController.any_instance.stubs(:current_user).returns(@user)
     @user_2 = users(:user_2)
 
-    @challenge = Challenge.create(title: "Pending Challenge 3",
+    @challenge = Challenge.create(title: "Pending Challenge 1",
       assigned_user: @user_2.id,
       expiration_date: "2016-04-02 22:47:00",
       message: "What are the odds 1",
       user_id: @user.id,
       status: 0)
+
+    @challenge_2 = Challenge.create(title: "Pending Challenge 2",
+      assigned_user: @user.id,
+      expiration_date: "2016-04-02 22:47:00",
+      message: "What are the odds 2",
+      user_id: @user_2.id,
+      status: 0)
+
   end
 
   describe "GET #index" do
     it "responds with success" do
       get :index
+
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
@@ -66,7 +75,7 @@ RSpec.describe ChallengesController, type: :controller do
   describe "DELETE #destroy/:id" do
     it "deletes the user" do
       expect {
-        delete :destroy, id: @challenge.id  
+        delete :destroy, id: @challenge.id
       }.to change(Challenge, :count).by(-1)
     end
   end
