@@ -29,6 +29,7 @@ class ApplicationController < ActionController::Base
     image_path = filepath.split("public")[1][1..-1]
     pic = File.new('public/' + image_path)
     session[:current_image] = image_path.split('/').last
+
     @headshotphoto = HeadshotPhoto.new
     @headshotphoto.image_upload = pic
     @headshotphoto.save

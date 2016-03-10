@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ChallengesController, type: :controller do
   fixtures :users
 
-  before :each do
+  before do
     @user = generate_user
     ApplicationController.any_instance.stubs(:current_user).returns(@user)
     @user_2 = users(:user_2)
@@ -36,6 +36,9 @@ RSpec.describe ChallengesController, type: :controller do
   describe "GET #show" do
     it "responds with success" do
       get :show, id: @challenge.id
+
+      # response
+
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
@@ -44,6 +47,7 @@ RSpec.describe ChallengesController, type: :controller do
   describe "GET #edit/:id" do
     it "responds with success" do
       get :edit, id: @challenge.id
+
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
