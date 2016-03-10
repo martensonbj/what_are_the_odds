@@ -12,7 +12,9 @@ class ChallengesController < ApplicationController
   def new
     @challenge = Challenge.new
     @friends = @challenge.get_friends(current_user)
-    @recorded_image = session[:current_image].split('/').last
+    if @recorded_image
+      @recorded_image = session[:current_image].split('/').last
+    end
  end
 
   def edit
