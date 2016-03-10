@@ -26,4 +26,5 @@ RSpec.describe PostsController, type: :controller do
         expect(Post.last.body).to eq("Test body of post 1")
       end
     end
+
 end

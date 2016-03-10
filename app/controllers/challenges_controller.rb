@@ -1,5 +1,5 @@
 class ChallengesController < ApplicationController
-  before_action :find_challenge, only: [:edit, :update, :destroy, :show, :decline_challenge]
+  before_action :find_challenge, only: [:edit, :update, :destroy, :show]
   before_action :get_posts, only: [:update, :show]
   helper :headshot
 
@@ -45,14 +45,12 @@ class ChallengesController < ApplicationController
     @images = bucket.get_aws_photos
     @response_video = @images[@challenge.response_video]
     @challenge_video = @images[@challenge.challenge_video]
-    binding.pry
   end
 
   def destroy
     @challenge.destroy
     redirect_to challenges_path
   end
-
 
   private
 

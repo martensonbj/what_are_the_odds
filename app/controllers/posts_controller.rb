@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to challenge_path(@post.challenge_id)
     else
-      flash[:error] =  "Please fill in all fields."
+      flash[:error] =  "Message can't be blank!"
       redirect_to challenge_path(@post.challenge_id)
     end
   end
