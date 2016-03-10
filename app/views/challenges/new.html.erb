@@ -39,7 +39,7 @@
         <br/><br/>
         <a href="#" class="btn btn-default" onClick="headshotHandlers.snap();" id="camera_button">Shoot</a>
       </div>
-  <%= f.hidden_field :challenge_video, :value => session[:current_image], id:"image" %>
+  <%= f.hidden_field :challenge_video, :value => @recorded_image, id:"image" %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit "Send Challenge!", class: "btn btn-default" %>
 <% end  %>
