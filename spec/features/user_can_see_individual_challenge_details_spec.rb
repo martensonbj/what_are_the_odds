@@ -24,9 +24,9 @@ RSpec.feature "show page", :type => :feature do
     user_id: @user_2.id,
     status: 0)
   end
+  
   scenario "User can see sent and pending challenges" do
     visit challenges_path(@challenge.id)
-    save_and_open_page
 
     within first('.challenge-details-table') do
       expect(page).to have_css("img[src*='https://s3-us-west-2.amazonaws.com/oddsroulette/']")

@@ -33,16 +33,13 @@
       <br>
     </div>
 
-    <div class="col-md-8 col-md-offset-2">
       <div class="headshot">
         <%= headshot_default_config(Rails.application.config.session_options[:key], headshot_capture_path) %>
         <%= headshot_camera %>
         <br/><br/>
-        <%= headshot_snap_button('Shoot')%>
+        <a href="#" class="btn btn-default" onClick="headshotHandlers.snap();" id="camera_button">Shoot</a>
       </div>
-  </div>
-
-  <%= f.hidden_field :challenge_video %>
+  <%= f.hidden_field :challenge_video, :value => session[:current_image], id:"image" %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit "Send Challenge!", class: "btn btn-default" %>
 <% end  %>

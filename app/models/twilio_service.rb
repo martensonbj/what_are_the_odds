@@ -4,6 +4,7 @@ class TwilioService
   def send_twilio_message
     target_phone = params["to"]
     message_body = "You've been invited to play What Are The Odds! Create an account and join in at http://odds-roulette.herokuapp.com!"
+    from = ENV['TWILIO_FROM_NUMBER']
 
     client = Twilio::REST::Client.new(
       ENV["TWILIO_ACCOUNT_SID"],
@@ -12,10 +13,9 @@ class TwilioService
 
     client.message.create(
       to: target_phone,
-      from: '6513833740',
+      from: from,
       body: message_body
     )
 
   end
-
 end

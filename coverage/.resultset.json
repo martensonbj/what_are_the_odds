@@ -1,8 +1,74 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/controllers/application_controller.rb": [
+      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/middlewares/flash_session_cookie_middleware.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
         0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        0,
+        null,
+        null
+      ],
+      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/helpers/challenges_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/helpers/home_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/helpers/posts_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/helpers/sessions_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/helpers/users_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/models/twilio_service.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/controllers/application_controller.rb": [
         0,
         0,
         0,
@@ -42,6 +108,17 @@
         0
       ],
       "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/controllers/challenges_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -214,50 +291,6 @@
         0,
         0
       ],
-      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/helpers/application_helper.rb": [
-        0,
-        0
-      ],
-      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/helpers/challenges_helper.rb": [
-        0,
-        0
-      ],
-      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/helpers/home_helper.rb": [
-        0,
-        0
-      ],
-      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/helpers/posts_helper.rb": [
-        0,
-        0
-      ],
-      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/helpers/sessions_helper.rb": [
-        0,
-        0
-      ],
-      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/helpers/users_helper.rb": [
-        0,
-        0
-      ],
-      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/middlewares/flash_session_cookie_middleware.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
       "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/models/bucket.rb": [
         0,
         0,
@@ -378,29 +411,6 @@
         0,
         0
       ],
-      "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/models/twilio-service.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
       "/Users/bmartenson/turing/3module/projects/what_are_the_odds/app/models/user.rb": [
         0,
         0,
@@ -437,6 +447,6 @@
         0
       ]
     },
-    "timestamp": 1457577365
+    "timestamp": 1457594933
   }
 }

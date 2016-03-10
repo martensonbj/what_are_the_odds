@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
   helper_method :challenger?
   helper_method :challengee?
   helper_method :headshot_post_save
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
   def current_user
@@ -30,6 +28,7 @@ class ApplicationController < ActionController::Base
   def headshot_post_save(filepath)
     image_path = filepath.split("public")[1][1..-1]
     pic = File.new('public/' + image_path)
+    session[:current_image] = image_path.split('/').last
     @headshotphoto = HeadshotPhoto.new
     @headshotphoto.image_upload = pic
     @headshotphoto.save

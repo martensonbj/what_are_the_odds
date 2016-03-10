@@ -2,6 +2,7 @@ class ChallengesController < ApplicationController
   before_action :find_challenge, only: [:edit, :update, :destroy, :show]
   before_action :get_posts, only: [:update, :show]
   helper :headshot
+  before_action :get_images, only: [:show]
 
   def index
       @sent_challenges = Challenge.all.where(user_id: current_user.id)
@@ -38,9 +39,11 @@ class ChallengesController < ApplicationController
 
   def show
     bucket = Bucket.new
-    @images = bucket.get_aws_photos
-    @response_video = @images[@challenge.response_video]
-    @challenge_video = @images[@challenge.challenge_video]
+    images = bucket.get_aws_photos
+    challenge_key = @challenge.challenge_video
+    response_key = @challenge.response_video
+    @challenge_video = images[challenge_key]
+    @response_video = images[response_key]
   end
 
   def destroy
@@ -51,7 +54,7 @@ class ChallengesController < ApplicationController
   private
 
   def challenge_params
-    params.require(:challenge).permit(:title, :assigned_user, :expiration_date, :message, :video, :user_id, :challenger_guess, :challengee_guess, :odds, :status, :response_message)
+    params.require(:challenge).permit(:title, :assigned_user, :expiration_date, :message, :video, :user_id, :challenger_guess, :challengee_guess, :odds, :status, :response_message, :challenge_video, :response_video)
   end
 
   def find_challenge
@@ -61,6 +64,15 @@ class ChallengesController < ApplicationController
   def get_posts
     @post = Post.new
     @posts = Post.where(challenge_id: @challenge.id)
+  end
+
+  def get_images
+    bucket = Bucket.new
+    images = bucket.get_aws_photos
+    challenge_key = @challenge.challenge_video
+    response_key = @challenge.response_video
+    @challenge_video = images[challenge_key]
+    @response_video = images[response_key]
   end
 
 end
