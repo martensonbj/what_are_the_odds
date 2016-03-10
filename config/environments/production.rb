@@ -3,7 +3,7 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
-  Paperclip.options[/usr/local/bin/convert] = "/usr/local/bin/"
+  Paperclip.options["/usr/local/bin/convert"] = "/usr/local/bin/"
 
   config.paperclip_defaults = {
     :storage => :s3,
