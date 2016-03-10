@@ -1,0 +1,22 @@
+<% if @challenge.challenge_activated? %>
+  <%= form_for @challenge, :multipart => true do |f| %>
+
+  <div class="headshot">
+    <%= headshot_default_config(Rails.application.config.session_options[:key], headshot_capture_path) %>
+    <%= headshot_camera %>
+    <br/><br/>
+    <a href="#" class="btn btn-default" onClick="headshotHandlers.snap();" id="camera_button">Shoot</a>
+  </div>
+
+    <div class="col-md-8 col-md-offset-2">
+      <div id="container" class="new_camera">
+        <h4>Challenge Complete?</h4>
+        <%= f.text_area :response_message, placeholder: 'What did you do to complete the challenge?' %>
+      </div>
+      <%= f.hidden_field :status, :value => 'completed' %>
+      <br>
+      <%= f.hidden_field :response_viddeo, :value => @recorded_image, id: "image" %>
+      <%= f.submit "Send Proof!", class: "btn btn-default" %>
+    </div>
+  <% end %>
+<% end %>

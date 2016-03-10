@@ -23,60 +23,9 @@
       <p>WAITING FOR CHALLENGE TO BE ACCEPTED</p>
     <% end %>
 
-    <% if @challenge.challenger_guess && @challenge.challengee_guess %>
-      <h4>Odds Are 1 in <%= @challenge.odds %></h4>
-      <h4 class="challenge-ready-text">CHALLENGE READY!</h4>
-      <h3 class="start-countdown btn btn-default"> START COUNTDOWN! <span class="count"></span> </h3>
-    <% end %>
+    <%= render partial: 'partials/initialize_guess', locals: {challenge: @challenge} %>
 
-    <% unless @challenge.status == "dead" || @challenge.status == "completed" || @challenge.status == "declined" %>
-      <div class="row answers">
-        <div class="col-md-6 answer-box">
-          <% if challenger? %>
-            <h3>YOUR GUESS</h3>
-          <% else %>
-            <h3>THEIR GUESS</h3>
-          <% end %>
-          <div class="show-answers" >
-            <%= @challenge.challenger_guess %><br>
-          </div>
-        </div>
-
-        <div class="col-md-6 answer-box">
-          <% if challengee? %>
-            <h3>YOUR GUESS</h3>
-          <% else %>
-            <h3>THEIR GUESS</h3>
-          <% end %>
-          <div class="show-answers" >
-            <%= @challenge.challengee_guess %></h1>
-          </div>
-        </div>
-      </div>
-    <% end %>
-
-    <% if @challenge.challenge_activated? %>
-      <%= form_for @challenge, :multipart => true do |f| %>
-
-      <div class="headshot">
-        <%= headshot_default_config(Rails.application.config.session_options[:key], headshot_capture_path) %>
-        <%= headshot_camera %>
-        <br/><br/>
-        <a href="#" class="btn btn-default" onClick="headshotHandlers.snap();" id="camera_button">Shoot</a>
-      </div>
-
-        <div class="col-md-8 col-md-offset-2">
-          <div id="container" class="new_camera">
-            <h4>Challenge Complete?</h4>
-            <%= f.text_area :response_message, placeholder: 'What did you do to complete the challenge?' %>
-          </div>
-          <%= f.hidden_field :status, :value => 'completed' %>
-          <br>
-          <%= f.hidden_field :response_viddeo, :value => @recorded_image, id: "image" %>
-          <%= f.submit "Send Proof!", class: "btn btn-default" %>
-        </div>
-      <% end %>
-    <% end %><!-- if challenge activated -->
+    <%= render partial: 'partials/challenge_activated', locals: {challenge: @challenge}  %>
   </div><!--challenge block-->
 
   <div class="challenge-posts col-md-6">

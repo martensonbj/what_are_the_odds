@@ -2,13 +2,6 @@
 <h3><%= link_to challenge.title, challenge_path(challenge.id)%></h3>
 <p class="align-center">Status: <%= challenge.status.upcase %></p>
 
-  <p>
-    TEMPORARY
-    (odds: <%= challenge.odds %>)
-    (Challenger's Guess: <%= challenge.challenger_guess %>)
-    (Challengee's Guess: <%= challenge.challengee_guess %>)
-  </p>
-
 <table class = "table table-bordered challenge-details-table">
   <thead>
     <th>From</th>

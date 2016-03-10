@@ -2,37 +2,7 @@
 <h3><%= link_to challenge.title, challenge_path(challenge.id)%></h3>
 <p class="align-center">Status: <%= challenge.status.upcase %></p>
 
-<!--DELETE-->
-  <p>
-    TEMPORARY
-    (odds: <%= challenge.odds %>)
-    (Challenger's Guess: <%= challenge.challenger_guess %>)
-    (Challengee's Guess: <%= challenge.challengee_guess %>)
-  </p>
-
-<table class = "table table-bordered challenge-details-table">
-  <thead>
-    <th>From</th>
-    <th>To</th>
-    <th>Delete?</th>
-  </thead>
-  <tr>
-    <td><%= User.find(challenge.user_id).name%></td>
-    <td><%= User.find(challenge.assigned_user.to_i).name %></td>
-    <td><%= link_to "Delete", challenge_path(challenge), method: :delete, :class=> "btn btn-default delete-button"%></td>
-  </tr>
-  <tr>
-    <td colspan="3"><%= challenge.message %></td>
-  </tr>
-  <% if challenge.response_message %>
-    <tr>
-      <td colspan="6">
-        <h4 class="complete-challenge-text">Challenge Completed!</h4>
-        <%= challenge.response_message %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<%= render partial: 'partials/index_challenge_table', locals: {challenge: challenge} %>
 
 <% if current_user.id == challenge.assigned_user.to_i && !challenge.challengee_guess && challenge.status != "declined" %>
   <p class="your-move">

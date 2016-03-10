@@ -1,0 +1,31 @@
+<% if @challenge.challenger_guess && @challenge.challengee_guess %>
+  <h4>Odds Are 1 in <%= @challenge.odds %></h4>
+  <h4 class="challenge-ready-text">CHALLENGE READY!</h4>
+  <h3 class="start-countdown btn btn-default"> START COUNTDOWN! <span class="count"></span> </h3>
+<% end %>
+
+<% unless @challenge.status == "dead" || @challenge.status == "completed" || @challenge.status == "declined" %>
+  <div class="row answers">
+    <div class="col-md-6 answer-box">
+      <% if challenger? %>
+        <h3>YOUR GUESS</h3>
+      <% else %>
+        <h3>THEIR GUESS</h3>
+      <% end %>
+      <div class="show-answers" >
+        <%= @challenge.challenger_guess %><br>
+      </div>
+    </div>
+
+    <div class="col-md-6 answer-box">
+      <% if challengee? %>
+        <h3>YOUR GUESS</h3>
+      <% else %>
+        <h3>THEIR GUESS</h3>
+      <% end %>
+      <div class="show-answers" >
+        <%= @challenge.challengee_guess %></h1>
+      </div>
+    </div>
+  </div>
+<% end %>

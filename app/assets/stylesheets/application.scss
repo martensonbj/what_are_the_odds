@@ -305,6 +305,9 @@ textarea#challenge_message {
 footer {
   background-color: #000;
   height: 60px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
   .footer-links {
     font-size: 30px;
     margin: 0px 10px;

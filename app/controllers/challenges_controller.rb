@@ -16,7 +16,9 @@ class ChallengesController < ApplicationController
  end
 
   def edit
-    @recorded_image = session[:current_image].split('/').last
+    if @recorded_image
+      @recorded_image = session[:current_image].split('/').last
+    end
   end
 
   def update
@@ -67,14 +69,14 @@ class ChallengesController < ApplicationController
 
   def get_challenge_video(images)
     if @challenge.challenge_video
-      challenge_key = @challenge.challenge_video
+      challenge_key = @challenge.challenge_video.split('/').last
       @challenge_video = images[challenge_key]
     end
   end
 
   def get_response_video(images)
     if @challenge.response_video
-      response_key = @challenge.response_video
+      response_key = @challenge.response_video.split('/').last
       @response_video = images[response_key]
     end
   end
