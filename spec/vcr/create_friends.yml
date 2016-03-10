@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://graph.facebook.com/10105044885670557/friends?access_token=CAAYjPdlkJlEBAM2620TeiMZCic3yq66bngGcZCoToHeafqLPEJZBXIIygKA6QO4sGjJyp81WI43NkuqVfYBHMGjgydKwr6GzU8fJZAi1SLZAbSgMBgWZBiSfEWZAwlFQZCFqUODRYlHZAX1kBOAjfHJPZB4lH9YBzOKUMtq6LmjlO1maH7CFT14hBDyF5TqRXvLcjUQFnyhrT1HotEv5q6QtXrx4HS6DMsbMc6Fs3t5qnVZCkxbT40ILjZBu
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Fb-Trace-Id:
+      - G5/0LqrIJm1
+      X-Fb-Rev:
+      - '2222534'
+      Etag:
+      - '"12762bff53cdf17374f01105ff3217a239cf14e3"'
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Facebook-Api-Version:
+      - v2.5
+      Expires:
+      - Sat, 01 Jan 2000 00:00:00 GMT
+      Vary:
+      - Accept-Encoding
+      X-Fb-Debug:
+      - EXYJLqzcnhzcsRes4ejuK/0d4MWMtlHGScG2UkcSza0aT6dSqYvRkZwWAhhmChXj99jaAkfwN9SitM9bTFDxSg==
+      Date:
+      - Thu, 10 Mar 2016 07:32:46 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '590'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"name":"Dan Winter","id":"10101680646058726"},{"name":"Lara
+        Dale","id":"10101003286997069"},{"name":"Jordan Lawler","id":"10153961720133622"},{"name":"Lovisa
+        Karin Emelie","id":"10208735000111912"},{"name":"Deb Martenson","id":"1021652391250031"}],"paging":{"next":"https:\/\/graph.facebook.com\/v2.5\/10105044885670557\/friends?access_token=CAAYjPdlkJlEBAM2620TeiMZCic3yq66bngGcZCoToHeafqLPEJZBXIIygKA6QO4sGjJyp81WI43NkuqVfYBHMGjgydKwr6GzU8fJZAi1SLZAbSgMBgWZBiSfEWZAwlFQZCFqUODRYlHZAX1kBOAjfHJPZB4lH9YBzOKUMtq6LmjlO1maH7CFT14hBDyF5TqRXvLcjUQFnyhrT1HotEv5q6QtXrx4HS6DMsbMc6Fs3t5qnVZCkxbT40ILjZBu&limit=25&offset=25&__after_id=enc_AdDS2hX7ib3ZBfoB6Mg8AcMZAoZCir49JXvOxChj6OjUrsdyZBk5nQBfx8xab5oR3nO1Vd3onhKfsUWeLnvx16BUNVut"},"summary":{"total_count":1008}}'
+    http_version: 
+  recorded_at: Thu, 10 Mar 2016 07:32:46 GMT
+recorded_with: VCR 3.0.1
