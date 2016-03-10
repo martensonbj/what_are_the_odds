@@ -2,7 +2,7 @@ class ChallengesController < ApplicationController
   before_action :find_challenge, only: [:edit, :update, :destroy, :show]
   before_action :get_posts, only: [:update, :show]
   helper :headshot
-  before_action :get_images, only: [:show]
+  before_action :get_images, only: [:show, :edit, :update]
 
   def index
     @sent_challenges = Challenge.get_sent_challenges(current_user)
@@ -11,10 +11,7 @@ class ChallengesController < ApplicationController
 
   def new
     @challenge = Challenge.new
-      @friends = @challenge.get_friends(current_user)
-    if @recorded_image
-      @recorded_image = session[:current_image].split('/').last
-    end
+    @friends = @challenge.get_friends(current_user)
  end
 
   def edit
@@ -25,6 +22,7 @@ class ChallengesController < ApplicationController
 
   def update
     if @challenge.update(challenge_params)
+      @challenge.set_response_image(session[:current_image])
       flash.now[:error] = "Challenge Updated!"
       render :show
     end
@@ -33,6 +31,7 @@ class ChallengesController < ApplicationController
   def create
     @challenge = Challenge.new(challenge_params)
     if @challenge.save
+      @challenge.set_image(session[:current_image])
       redirect_to challenges_path
     else
       flash[:error] = "Please fill in required fields."
@@ -71,14 +70,14 @@ class ChallengesController < ApplicationController
 
   def get_challenge_video(images)
     if @challenge.challenge_video
-      challenge_key = @challenge.challenge_video.split('/').last
+      challenge_key = @challenge.challenge_video
       @challenge_video = images[challenge_key]
     end
   end
 
   def get_response_video(images)
     if @challenge.response_video
-      response_key = @challenge.response_video.split('/').last
+      response_key = @challenge.response_video
       @response_video = images[response_key]
     end
   end

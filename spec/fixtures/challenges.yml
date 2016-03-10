@@ -5,11 +5,3 @@ pending_challenge_1:
   message: "What are the odds 1"
   user_id: User.first.id
   status: 0
-
-# pending_challenge_2:
-#   title: "Pending Challenge 2"
-#   assigned_user: User.first.id
-#   expiration_date: "2016-04-02 22:47:00"
-#   message: "What are the odds 2"
-#   user_id: User.last.id
-#   status: 0

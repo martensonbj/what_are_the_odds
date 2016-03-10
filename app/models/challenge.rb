@@ -7,32 +7,41 @@ class Challenge < ActiveRecord::Base
   validates :title, presence: true
   validates :message, presence: true
   validates :assigned_user, presence: true
-
   has_attached_file :image_upload
   do_not_validate_attachment_file_type :image_upload
 
   def both_guesses_submitted?
-    true if (self.challenger_guess && self.challengee_guess)
+    (self.challenger_guess && self.challengee_guess) ? true : false
   end
 
   def challenge_activated?
-    true if (self.both_guesses_submitted? && self.guesses_match?)
+    (self.both_guesses_submitted? && self.guesses_match?) ? true : false
   end
 
   def guesses_match?
-    true if (self.challenger_guess == self.challengee_guess)
+    (self.challenger_guess == self.challengee_guess) ? true : false
   end
 
-  def challengee_accepted?
-    true if (self.challengee_guess && !self.challenger_guess)
+  def challenge_accepted?
+    (self.challengee_guess && !self.challenger_guess) ? true : false
   end
 
   def self.get_sent_challenges(current_user)
-    true if (self.all.where(user_id: current_user.id))
+    (self.all.where(user_id: current_user.id))
   end
 
   def self.get_pending_challenges(current_user)
-    true if (self.all.where(assigned_user: current_user.id.to_s))
+    (self.all.where(assigned_user: current_user.id.to_s))
+  end
+
+  def set_image(image_path)
+    self.update_attributes(challenge_video: image_path)
+  end
+
+  def set_response_image(image_path)
+    if self.challenge_video?
+      self.update_attributes(response_video: image_path)
+    end
   end
 
   def get_friends(current_user)

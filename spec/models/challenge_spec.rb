@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe FriendBuilder, type: :model do
+RSpec.describe Challenge, type: :model do
   fixtures :users
 
   before do
@@ -31,9 +31,18 @@ RSpec.describe FriendBuilder, type: :model do
     assigned_user: @user.id,
     expiration_date: "2016-04-02 22:47:00",
     message: "What are the odds 2",
-    user_id: @user_2.id,
+    user_id: @user.id,
     odds: 10,
     challenger_guess: 5,
+    status: 0)
+
+    @challenge_4 = Challenge.create(title: "Pending Challenge 2",
+    assigned_user: @user.id,
+    expiration_date: "2016-04-02 22:47:00",
+    message: "What are the odds 2",
+    user_id: @user_2.id,
+    odds: 10,
+    challengee_guess: 5,
     status: 0)
   end
 
@@ -47,24 +56,25 @@ RSpec.describe FriendBuilder, type: :model do
     expect(@challenge_2.challenge_activated?).to be false
   end
 
-  it "both_guesses_submitted?" do
-
+  it "guesses_match?" do
+    expect(@challenge_1.guesses_match?).to be true
+    expect(@challenge_2.guesses_match?).to be false
   end
 
-  it "both_guesses_submitted?" do
-
+  it "challenge_accepted?" do
+    expect(@challenge_4.challenge_accepted?).to be true
+    expect(@challenge_3.challenge_accepted?).to be false
   end
 
-  it "both_guesses_submitted?" do
-
+  it "get_sent_challenges" do
+    challenges = Challenge.all
+    expect(challenges.get_sent_challenges(@user).count).to eq 2
   end
 
-  it "both_guesses_submitted?" do
-
+  it "get_pending_challenges" do
+    challenges = Challenge.all
+    expect(challenges.get_pending_challenges(@user).count).to eq 3
   end
 
-  it "both_guesses_submitted?" do
-
-  end
 
 end
