@@ -22,7 +22,9 @@ class ChallengesController < ApplicationController
 
   def update
     if @challenge.update(challenge_params)
-      @challenge.set_response_image(session[:current_image])
+      if ready_for_response_image?
+        @challenge.set_response_image(session[:current_image])
+      end
       flash.now[:error] = "Challenge Updated!"
       render :show
     end
@@ -31,7 +33,7 @@ class ChallengesController < ApplicationController
   def create
     @challenge = Challenge.new(challenge_params)
     if @challenge.save
-      @challenge.set_image(session[:current_image])
+      @challenge.set_challenge_image(session[:current_image])
       redirect_to challenges_path
     else
       flash[:error] = "Please fill in required fields."
@@ -51,6 +53,10 @@ class ChallengesController < ApplicationController
 
   def challenge_params
     params.require(:challenge).permit(:title, :assigned_user, :expiration_date, :message, :video, :user_id, :challenger_guess, :challengee_guess, :odds, :status, :response_message, :challenge_video, :response_video)
+  end
+
+  def ready_for_response_image?
+    ((current_user.id == @challenge.assigned_user.to_i) && (@challenge.challenge_activated?)) ? true : false
   end
 
   def find_challenge

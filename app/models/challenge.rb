@@ -34,14 +34,13 @@ class Challenge < ActiveRecord::Base
     (self.all.where(assigned_user: current_user.id.to_s))
   end
 
-  def set_image(image_path)
+  def set_challenge_image(image_path)
     self.update_attributes(challenge_video: image_path)
   end
 
   def set_response_image(image_path)
-    if self.challenge_video?
-      self.update_attributes(response_video: image_path)
-    end
+    binding.pry
+    self.update_attributes(response_video: image_path)
   end
 
   def get_friends(current_user)

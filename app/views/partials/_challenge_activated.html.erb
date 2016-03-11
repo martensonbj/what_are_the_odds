@@ -1,4 +1,4 @@
-<% if @challenge.challenge_activated? %>
+<% if @challenge.challenge_activated? && (current_user.id == @challenge.assigned_user.to_i)%>
   <%= form_for @challenge, :multipart => true do |f| %>
 
   <div class="headshot">
