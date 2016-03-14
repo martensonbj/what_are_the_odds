@@ -39,7 +39,6 @@ class Challenge < ActiveRecord::Base
   end
 
   def set_response_image(image_path)
-    binding.pry
     self.update_attributes(response_video: image_path)
   end
 
